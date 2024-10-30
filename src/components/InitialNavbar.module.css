@@ -1,0 +1,53 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--zinc-400);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+}
+
+.navLinks li {
+    margin: 0 15px;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: var(--zinc-700);
+}
+
+.authLinks {
+    display: flex;
+    gap: 15px;
+}
+
+.authLinks a {
+    text-decoration: underline;
+    color: var(--zinc-700);
+}
+
+.registerButton {
+    background-color: var(--blue);
+    padding: 5px  10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.registerButton:hover {
+    opacity: 0.8;
+}
+
+.registerButton a {
+    color: white;
+    text-decoration: none;
+}
