@@ -5,7 +5,7 @@ import Link from 'next/link';
 const InitialNavbar = () => {
     return (
         <nav className={styles.navbar}>
-            <div className={styles.logo}>logo</div>
+            <div className={styles.logo}><Link href="/"><img src="https://res.cloudinary.com/dcbd1dnvk/image/upload/v1730427036/rganiza__2_-removebg-preview_2_rdnqbn.png" alt="logo" /></Link></div>
             <ul className={styles.navLinks}>
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about">Sobre</Link></li>
@@ -13,7 +13,7 @@ const InitialNavbar = () => {
             </ul>
             
             <div className={styles.authLinks}>
-                <Link href="/auth/login">Login</Link>
+                <button className={styles.loginButton}><Link href="/auth/login">Login</Link></button>
                 <button className={styles.registerButton}><Link href="/auth/register">Registre-se</Link></button>
             </div>
         </nav>

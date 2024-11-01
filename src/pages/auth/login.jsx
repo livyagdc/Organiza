@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import React from "react";
+import formStyle from "@/styles/form.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -38,20 +39,20 @@ export default function Login() {
   //className="min-h-screen"
 
   return (
-    <div className="login">
+    <div className={formStyle.login}>
 
       <InitialNavbar />
 
-      <div class="authDiv">
-        <section class="formSection">
-          <h1 class="authTitle">Login</h1>
-          <form class="authForm" onSubmit={handleSubmit}>
+      <div className={formStyle.authDiv}>
+        <section className={formStyle.formSection}>
+          <h1 className={formStyle.authTitle}>Login</h1>
+          <form className={formStyle.authForm} onSubmit={handleSubmit}>
 
-            <div class="inputDiv">
-              <div class="label">
+            <div className={formStyle.inputDiv}>
+              <div className={formStyle.label}>
                 <h3>Email <span>*</span></h3>
               </div>
-              <input class="formInput"
+              <input className={formStyle.formInput}
                 type="email"
                 placeholder="Digite seu email"
                 value={email}
@@ -60,11 +61,11 @@ export default function Login() {
               />
             </div>
 
-            <div class="inputDiv">
-              <div class="label">
+            <div className={formStyle.inputDiv}>
+              <div className={formStyle.label}>
                 <h3>Senha <span>*</span></h3>
               </div>
-              <input class="formInput"
+              <input className={formStyle.formInput}
                 type="password"
                 placeholder="Digite sua senha"
                 value={password}
@@ -73,11 +74,11 @@ export default function Login() {
               />
             </div>
 
-            {error && <p className="error">{error}</p>}
-            <button class="formBt" type="submit">Entrar</button>
+            {error && <p className={formStyle.error}>{error}</p>}
+            <button className={formStyle.formBt} type="submit">Entrar</button>
           </form>
 
-          <span class="formLink">
+          <span className={formStyle.formLink}>
             Ainda não possui uma conta?
             <strong>
               <Link href="./register"> Inscreva-se</Link>
