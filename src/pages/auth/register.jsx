@@ -1,6 +1,6 @@
 "use client";
 
-import InitialNavbar from "@/components/InitialNavbar";
+import InitialNavbar from "@/components/HomeNavbar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

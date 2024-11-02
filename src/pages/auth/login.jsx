@@ -1,4 +1,5 @@
-import InitialNavbar from "@/components/InitialNavbar";
+// auth/login.jsx
+import InitialNavbar from "@/components/HomeNavbar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -25,8 +26,10 @@ export default function Login() {
       });
 
       if (res.ok) {
+        const data = await res.json();
+        sessionStorage.setItem('token', data.token);
         //Rediriciona para a página principal depois do login
-        router.push("/home");
+        router.push("/initial");
       } else {
         const data = await res.json();
         setError(data.message || "Falha no login");
