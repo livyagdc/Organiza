@@ -1,10 +1,10 @@
-import InitialNavbar from "@/components/InitialNavbar";
+import HomeNavbar from "@/components/HomeNavbar";
 import style from "@/styles/index.module.css";
 
 export default function Home() {
   return (
     <div className={style.home}>
-      <InitialNavbar />
+      <HomeNavbar />
 
       <main className={style.homeMain}>
         <section className={style.homeTextSection}>
