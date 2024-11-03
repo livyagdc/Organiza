@@ -32,12 +32,14 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   background: linear-gradient(to right, var(--background), var(--gradient));
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
   font-family: 'Montserrat', sans-serif;
 }

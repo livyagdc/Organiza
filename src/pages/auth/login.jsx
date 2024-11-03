@@ -1,10 +1,10 @@
 // auth/login.jsx
-import InitialNavbar from "@/components/HomeNavbar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import React from "react";
 import formStyle from "@/styles/form.module.css";
+import Layout from "@/components/Layout";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ export default function Login() {
       if (res.ok) {
         const data = await res.json();
         sessionStorage.setItem('token', data.token);
-        //Rediriciona para a página principal depois do login
+        sessionStorage.setItem('userName', data.name);
         router.push("/initial");
       } else {
         const data = await res.json();
@@ -39,57 +39,55 @@ export default function Login() {
     }
   };
 
-  //className="min-h-screen"
-
   return (
-    <div className={formStyle.login}>
+    <Layout>
+      <div className={formStyle.login}>
 
-      <InitialNavbar />
+        <div className={formStyle.authDiv}>
+          <section className={formStyle.formSection}>
+            <h1 className={formStyle.authTitle}>Login</h1>
+            <form className={formStyle.authForm} onSubmit={handleSubmit}>
 
-      <div className={formStyle.authDiv}>
-        <section className={formStyle.formSection}>
-          <h1 className={formStyle.authTitle}>Login</h1>
-          <form className={formStyle.authForm} onSubmit={handleSubmit}>
-
-            <div className={formStyle.inputDiv}>
-              <div className={formStyle.label}>
-                <h3>Email <span>*</span></h3>
+              <div className={formStyle.inputDiv}>
+                <div className={formStyle.label}>
+                  <h3>Email <span>*</span></h3>
+                </div>
+                <input className={formStyle.formInput}
+                  type="email"
+                  placeholder="Digite seu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
-              <input className={formStyle.formInput}
-                type="email"
-                placeholder="Digite seu email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
 
-            <div className={formStyle.inputDiv}>
-              <div className={formStyle.label}>
-                <h3>Senha <span>*</span></h3>
+              <div className={formStyle.inputDiv}>
+                <div className={formStyle.label}>
+                  <h3>Senha <span>*</span></h3>
+                </div>
+                <input className={formStyle.formInput}
+                  type="password"
+                  placeholder="Digite sua senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
               </div>
-              <input className={formStyle.formInput}
-                type="password"
-                placeholder="Digite sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
 
-            {error && <p className={formStyle.error}>{error}</p>}
-            <button className={formStyle.formBt} type="submit">Entrar</button>
-          </form>
+              {error && <p className={formStyle.error}>{error}</p>}
+              <button className={formStyle.formBt} type="submit">Entrar</button>
+            </form>
 
-          <span className={formStyle.formLink}>
-            Ainda não possui uma conta?
-            <strong>
-              <Link href="./register"> Inscreva-se</Link>
-            </strong>
-          </span>
-        </section>
+            <span className={formStyle.formLink}>
+              Ainda não possui uma conta?
+              <strong>
+                <Link href="./register"> Inscreva-se</Link>
+              </strong>
+            </span>
+          </section>
 
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }

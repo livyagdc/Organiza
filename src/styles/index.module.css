@@ -1,46 +1,43 @@
-.home {
-    width: auto;
-    height: 100vh;
-}
-
 .homeMain {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
+    padding: 3rem;
+    gap: 2rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background: white;
-    margin: 30px;
+    margin: 2rem;
 }
 
 
 .homeTextSection {
     border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
+    padding: 3rem;
+    margin-bottom: 3rem;
 }
 
 
 .homeTextSection h1 {
-    font-size: 4rem; /* Tamanho maior para o título */
-    color: #1a1a1a; /* Cor do texto mais escura */
-    font-weight: 700; /* Negrito */
-    margin-bottom: 30px;
+    font-size: 4rem; 
+    color: black; 
+    font-weight: 700; 
+    margin-bottom: 3rem;
+    line-height: 1.2;
 }
 
 
 .homeTextSection ul {
     list-style: none;
-    margin-left: 15px;
-    margin-bottom: 30px;
+    margin-left: 1rem;
+    margin-bottom: 3rem;
 }
 
 .homeTextSection li {
     font-size: 1.2rem;
-    margin: 20px 0; /* Aumenta o espaço entre os itens */
-    color: var(--zinc-700); /* Cor mais suave */
-    line-height: 1.5; /* Aumenta a altura da linha para melhorar a legibilidade */
+    margin: 2rem 0;
+    color: var(--zinc-700);
+    line-height: 1.6;
 }
 
 .homeTextSection span {
@@ -50,31 +47,31 @@
 
 .homeTextSection h2 {
     font-size: 1.5rem;
-    margin-top: 100px;
+    margin-top: 5rem;
     color: var(--green);
-    transition: color 0.3s ease; /* Transição suave para a cor */
+    transition: color 0.3s ease;
 }
 
 .homeTextSection h2:hover {
-    color: var(--blue); /* Cor ao passar o mouse */
+    color: var(--blue); 
 }
 
 .homeImageSection img {
     max-width: 100%; 
     height: auto; 
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 
 @media (max-width: 768px) {
     .homeMain {
-        flex-direction: column; /* Alinha verticalmente em telas menores */
-        padding: 20px; /* Menos padding */
+        flex-direction: column; 
+        padding: 2rem; 
     }
     .homeTextSection,
     .homeImageSection {
-        width: 100%; /* Ocupa toda a largura */
-        margin-bottom: 20px; /* Espaçamento entre as seções */
+        width: 100%; 
+        margin-bottom: 2rem;
     }
 }

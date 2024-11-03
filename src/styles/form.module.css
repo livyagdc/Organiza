@@ -1,11 +1,11 @@
 /* Form style */
 .authDiv {
-    min-height: 90vh;
-    display: flex;
+    padding: 30px;
     align-items: center;
     justify-content: center;
-    width: 100%;
     color: black;
+    display: flex;
+    flex: 1;
   }
   
   .authTitle {

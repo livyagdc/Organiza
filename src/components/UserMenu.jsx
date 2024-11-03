@@ -6,6 +6,7 @@ import logout from "@/pages/api/auth/logout";
 
 export default function UserMenu() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const userName = sessionStorage.getItem('userName')
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -19,7 +20,7 @@ export default function UserMenu() {
 
             {menuOpen && (
                 <div className={styles.menu}>
-                    <p>Olá, {`{user.name}`}!</p>
+                    <p>Olá, {userName}!</p>
                     <ul>
                         <li><Link href="/edit"><MdEdit /> Editar perfil</Link></li>
                         <li><Link href="/config"><MdSettings /> Configurações</Link></li>
