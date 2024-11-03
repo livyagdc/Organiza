@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import formStyle from "@/styles/form.module.css";
-import Layout from "@/components/Layout";
+import HomeNavBar from "@/components/HomeNavbar";
+import Footer from "@/components/Footer";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -39,7 +40,9 @@ export default function Register() {
     };
 
     return (
-        <Layout>
+        <div className="cont">
+            <header><HomeNavBar /></header>
+            <div className="main">
             <div className={formStyle.register}>
                 <div className={formStyle.authDiv}>
                     <section className={formStyle.formSection}>
@@ -96,7 +99,10 @@ export default function Register() {
                         </span>
                     </section>
                 </div>
+                
             </div>
-        </Layout>
+            </div>
+            <Footer />
+        </div>
     );
 }

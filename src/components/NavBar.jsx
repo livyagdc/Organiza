@@ -7,11 +7,11 @@ import UserMenu from './UserMenu';
 export default function Navbar() {
     return (
         <section className={styles.navbar}>
-            <div className={styles.logo}><Link href="/initial"><img src="https://res.cloudinary.com/dcbd1dnvk/image/upload/v1730427036/rganiza__2_-removebg-preview_2_rdnqbn.png" alt="logo" /></Link></div>
+            <div className={styles.logo}><Link href="/dashboard"><img src="https://res.cloudinary.com/dcbd1dnvk/image/upload/v1730427036/rganiza__2_-removebg-preview_2_rdnqbn.png" alt="logo" /></Link></div>
 
             <div className={styles.navLinks}>
 
-                <Link href="/initial"> <MdOutlineHome /> Home</Link>
+                <Link href="/dashboard"> <MdOutlineHome /> Home</Link>
 
                 <Link href="/receitas"> <MdAdd /> Receitas</Link>
 

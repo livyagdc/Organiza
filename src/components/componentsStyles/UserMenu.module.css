@@ -5,6 +5,7 @@
 
 .icon {
     cursor: pointer;
+    color: var(--zinc-700);
 }
 
 .menu {

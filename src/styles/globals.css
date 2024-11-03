@@ -32,7 +32,7 @@
   box-sizing: border-box;
 }
 
-html, body {
+body {
   width: 100%;
   min-height: 100vh;
 }
@@ -42,4 +42,14 @@ body {
   background: var(--background);
   background: linear-gradient(to right, var(--background), var(--gradient));
   font-family: 'Montserrat', sans-serif;
+}
+
+.cont{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
 }

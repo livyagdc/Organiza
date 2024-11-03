@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         );
 
 
-        res.status(200).json({ message: 'Login efetuado com sucesso!', token, name: user.name });
+        res.status(200).json({ message: 'Login efetuado com sucesso!', token, name: user.name, email: user.email });
     } else {
         res.status(405).json({ message: 'Método não permitido' })
     }

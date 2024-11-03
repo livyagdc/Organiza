@@ -1,15 +1,17 @@
-// /initial
+// /dashboard
 import Footer from "@/components/Footer"
 import Navbar from "@/components/NavBar"
 import PrivateRoute from "@/components/PrivateRoute"
 
-export default function Initial() {
+export default function Dashboard() {
     return (
         <PrivateRoute>
-            <div className="main">
-                <Navbar/>
-            </div>
+            <div className="cont">
+            <Navbar />
+                <div className="main">
+                </div>
             <Footer />
+            </div>
         </PrivateRoute>
     )
 }
