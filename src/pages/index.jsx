@@ -1,5 +1,6 @@
 import style from "@/styles/index.module.css";
 import HomeNavBar from "@/components/HomeNavbar";
+import Link from 'next/link';
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
                 <li><span>•</span> Defina metas, acompanhe seu progresso e tenha controle sobre suas finanças em um só lugar.</li>
                 <li><span>•</span> Prepare-se para alcançar uma vida financeira mais equilibrada e organizada.</li>
               </ul>
-              <h2>Comece agora e transforme sua relação com o dinheiro!</h2>
+              <h2 className={style.start}><Link href="/auth/register">Comece agora e transforme sua relação com o dinheiro!</Link></h2>
             </section>
 
             <section className={style.homeImageSection}>

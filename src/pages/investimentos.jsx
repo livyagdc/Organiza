@@ -71,7 +71,7 @@ export default function Investimentos() {
             <div className="cont">
                 <Navbar />
                 <div className="main">
-                    <h1>Investimentos</h1>
+                    <h1 className={styles.investTitle}>Investimentos</h1>
                     <div className={styles.investFormDiv}>
                         <section className={formStyle.formSection}>
                             <h2 className={formStyle.authTitle}>Adicionar investimento</h2>
@@ -126,7 +126,7 @@ export default function Investimentos() {
                         </section>
                     </div>
 
-                    <h2 className={styles.investListTitle}>Lista de investimentos</h2>
+                    <h1 className={styles.investListTitle}>Lista de investimentos</h1>
                     <section className={styles.investListSection}>
                         {investments.map((investment) => (
                             <div key={investment.id}>
