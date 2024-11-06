@@ -1,3 +1,4 @@
+// api/auth/register.js
 import bcrypt from 'bcryptjs';
 import { PrismaClient } from '@prisma/client';
 
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
         });
 
         if (existingUser) {
-            return res.status(400).json({ message: 'Usuário já esiste'});
+            return res.status(400).json({ message: 'Usuário já existe'});
         }
 
         //Criptografa a senha

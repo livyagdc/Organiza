@@ -1,4 +1,6 @@
+//api/auth/logout.js
 export default function logout() {
-    sessionStorage.removeItem('token')
+    localStorage.removeItem('token')
+    localStorage.removeItem('userName')
     window.location.href = '/auth/login';
 }
