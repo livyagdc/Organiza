@@ -12,6 +12,7 @@ export default function Investimentos() {
     const [type, setType] = useState('');
     const [value, setValue] = useState('');
     const [institution, setInstitution] = useState('');
+    const [date, setDate] = useState('');
     const [growthTax, setGrowthTax] = useState('');
 
     useEffect(() => {
@@ -31,6 +32,7 @@ export default function Investimentos() {
             type,
             value: parseFloat(value),
             institution,
+            date,
             growthTax: parseFloat(growthTax),
             growth: calculateGrowth(parseFloat(value), parseFloat(growthTax)),
         };
@@ -58,6 +60,7 @@ export default function Investimentos() {
     const clearForm = () => {
         setType('');
         setValue('');
+        setDate('');
         setInstitution('');
         setGrowthTax('');
     };
@@ -106,6 +109,17 @@ export default function Investimentos() {
                                         placeholder="Nome da instituição"
                                         value={institution}
                                         onChange={(e) => setInstitution(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                <div className={formStyle.inputDiv}>
+                                    <h2 className={formStyle.label}>Data:</h2>
+                                    <input className={formStyle.formInput}
+                                        type="date"
+                                        placeholder="Data do investimento"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
                                         required
                                     />
                                 </div>

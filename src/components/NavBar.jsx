@@ -17,7 +17,7 @@ export default function Navbar() {
 
                 <Link href="/despesas"> <MdRemove /> Despesas</Link>
 
-                <Link href="/orcamento"> <MdBarChart /> Orçamento</Link>
+                <Link href="/budget"> <MdBarChart /> Orçamento</Link>
 
                 <Link href="/investimentos"> <MdTrendingUp /> Investimentos</Link>
 
