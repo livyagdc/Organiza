@@ -1,0 +1,99 @@
+// auth/login.jsx
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import React from "react";
+import formStyle from "@/styles/form.module.css";
+import HomeNavBar from "@/components/HomeNavbar"
+import Footer from "@/components/Footer";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("")
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userName', data.name);
+        localStorage.setItem('userEmail', data.email);
+        router.push("/dashboard");
+      } else {
+        const data = await res.json();
+        setError(data.message || "Falha no login");
+      }
+    } catch {
+      setError("Ocorreu um erro. Tente novamente.")
+    }
+  };
+
+  return (
+      <div className="cont">
+        <HomeNavBar />
+        <div className="main">
+          <div className={formStyle.login}>
+            <div className={formStyle.authDiv}>
+              <section className={formStyle.formSection}>
+                <h1 className={formStyle.authTitle}>Login</h1>
+                <form className={formStyle.authForm} onSubmit={handleSubmit}>
+
+                  <div className={formStyle.inputDiv}>
+                    <div className={formStyle.label}>
+                      <h3>Email <span>*</span></h3>
+                    </div>
+                    <input className={formStyle.formInput}
+                      type="email"
+                      placeholder="Digite seu email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className={formStyle.inputDiv}>
+                    <div className={formStyle.label}>
+                      <h3>Senha <span>*</span></h3>
+                    </div>
+                    <input className={formStyle.formInput}
+                      type="password"
+                      placeholder="Digite sua senha"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  {error && <p className={formStyle.error}>{error}</p>}
+                  <button className={formStyle.formBt} type="submit">Entrar</button>
+                </form>
+
+                <span className={formStyle.formLink}>
+                  Ainda não possui uma conta?
+                  <strong>
+                    <Link href="./register"> Inscreva-se</Link>
+                  </strong>
+                </span>
+              </section>
+
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+
+  );
+}
