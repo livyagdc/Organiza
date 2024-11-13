@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--zinc-400);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.navLinks a:hover {
+    color: var(--green);
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: var(--zinc-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
