@@ -7,8 +7,9 @@
     background: gray;
     border-radius: 5px;
     border: 2px solid blue;
-    max-width: 45%;
+    max-width: 90%;
     box-sizing: border-box;
+    
   }
   
   /* Formulário */
@@ -27,8 +28,8 @@
   .inputForm button {
     flex: 1;
     min-width: 120px;
-    max-width: calc(33% - 1em); /* Ajuste para caber no contêiner */
-    margin-bottom: 1em; /* Espaçamento entre as linhas de inputs */
+    max-width: 100%; /* Ajuste para caber no contêiner */
+    margin: 0.5em; /* Espaçamento entre as linhas de inputs */
     padding: 5px; /* Padding interno para melhor visualização */
   }
   
@@ -62,3 +63,11 @@
     max-width: calc(33% - 1em); /* Ajuste para caber no contêiner */
   }
   
+  @media (max-width: 600px) {
+    .inputForm input,
+    .inputForm select,
+    .inputForm button {
+      max-width: 100%; /* Para ocupar toda a largura da tela */
+      flex-basis: 100%; /* Ocupa uma linha inteira */
+    }
+  }
