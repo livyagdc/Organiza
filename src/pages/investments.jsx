@@ -1,12 +1,11 @@
 import PrivateRoute from "@/components/PrivateRoute";
 import { useEffect, useState } from "react";
-import formStyle from "@/styles/form.module.css";
 import styles from "@/styles/invest.module.css";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/NavBar/NavBar";
 import InvestCard from "@/components/InvestCard/InvestCard";
 import { v4 as uuidv4 } from "uuid";
-import DynamicForm from "@/components/DynamicForm/DynamicForm"; // Importe o DynamicForm
+import DynamicForm from "@/components/DynamicForm/DynamicForm";
 
 export default function Investments() {
     const [investments, setInvestments] = useState([]);
