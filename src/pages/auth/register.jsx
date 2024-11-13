@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import formStyle from "@/styles/form.module.css";
-import HomeNavBar from "@/components/HomeNavbar";
-import Footer from "@/components/Footer";
+import HomeNavBar from "@/components/HomeNavBar/HomeNavbar";
+import Footer from "@/components/Footer/Footer";
 
 export default function Register() {
     const [name, setName] = useState("");

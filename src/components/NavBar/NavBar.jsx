@@ -1,7 +1,7 @@
-import styles from './componentsStyles/Navbar.module.css';
+import styles from './Navbar.module.css';
 import Link from 'next/link';
 import { MdAdd, MdBarChart, MdOutlineHome, MdRemove, MdTrendingUp } from 'react-icons/md'
-import UserMenu from './UserMenu';
+import UserMenu from '@/components/UserMenu/UserMenu';
 
 
 export default function Navbar() {
@@ -19,7 +19,7 @@ export default function Navbar() {
 
                 <Link href="/budget"> <MdBarChart /> Orçamento</Link>
 
-                <Link href="/investimentos"> <MdTrendingUp /> Investimentos</Link>
+                <Link href="/investments"> <MdTrendingUp /> Investimentos</Link>
 
             </div>
 

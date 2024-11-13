@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import React from "react";
 import formStyle from "@/styles/form.module.css";
-import HomeNavBar from "@/components/HomeNavbar"
-import Footer from "@/components/Footer";
+import HomeNavBar from "@/components/HomeNavBar/HomeNavbar"
+import Footer from "@/components/Footer/Footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");

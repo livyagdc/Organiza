@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
-import style from "@/components/componentsStyles/BudgetChart.module.css";
+import style from "./BudgetChart.module.css";
 
 export default function BudgetChart() {
     const [budgets, setBudgets] = useState([]);
@@ -23,8 +23,8 @@ export default function BudgetChart() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="plannedAmount" fill="#8884d8" name="Planejado" />
-                <Bar dataKey="spentAmount" fill="#82ca9d" name="Gastos" />
+                <Bar dataKey="plannedAmount" fill="#2196F3" name="Planejado" />
+                <Bar dataKey="spentAmount" fill="#ef4444" name="Gastos" />
             </BarChart>
         </div>
     );

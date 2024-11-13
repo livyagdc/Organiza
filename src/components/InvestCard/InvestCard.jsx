@@ -1,6 +1,6 @@
 // components/InvestmentCard.js
 import { useState } from "react";
-import styles from "./componentsStyles/InvestCard.module.css";
+import styles from "./InvestCard.module.css";
 import { MdDeleteForever } from "react-icons/md";
 
 export default function InvestCard({ id, type, value, institution, growthTax, growth, date, onDelete }) {  

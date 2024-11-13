@@ -2,12 +2,12 @@ import PrivateRoute from "@/components/PrivateRoute";
 import { useEffect, useState } from "react";
 import formStyle from "@/styles/form.module.css";
 import styles from "@/styles/invest.module.css";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/NavBar";
-import InvestCard from "@/components/InvestCard";
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/NavBar/NavBar";
+import InvestCard from "@/components/InvestCard/InvestCard";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Investimentos() {
+export default function Investments() {
     const [investments, setInvestments] = useState([]);
     const [type, setType] = useState('');
     const [value, setValue] = useState('');
@@ -44,7 +44,7 @@ export default function Investimentos() {
             localStorage.setItem(`investments_${email}`, JSON.stringify(savedInvestments));
             setInvestments(savedInvestments);
         }
-    
+
         clearForm();
     };
 
@@ -78,7 +78,7 @@ export default function Investimentos() {
                     <div className={styles.investFormDiv}>
                         <section className={formStyle.formSection}>
                             <h2 className={formStyle.authTitle}>Adicionar investimento</h2>
-                            <form className={styles.investAuthForm} onSubmit={handleAddInvestment}>
+                            <form className={styles.investForm} onSubmit={handleAddInvestment}>
 
                                 <div className={formStyle.inputDiv}>
                                     <h2 className={formStyle.label}>Tipo de Investimento:</h2>
