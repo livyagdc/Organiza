@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Container, RadioGroup, SelectCategoria, Input } from './styles';
 import styles from '@/components/resumeStyles/homeInput.module.css'
+import DynamicForm from '@/components/DynamicForm/DynamicForm';
+
 
 function InputForm({ handleSave }) {
   const [descricao, setDescricao] = useState('');
@@ -30,6 +32,65 @@ function InputForm({ handleSave }) {
     'Transporte',
     'Vestiário',
     'Outras']);
+
+    const inputHomeFields = [
+      {
+          label: "Data",
+          type: "date",
+          value: data,
+          onChange: setData,
+          placeholder: "Data",
+          required: true
+      },
+      {
+        label: "Valor",
+        type: "number",
+        value: valor,
+        onChange: setValor,
+        placeholder: "Insira o Valor",
+        required: true
+    },
+    {
+      label: "Descrição",
+      type: "text",
+      value: descricao,
+      onChange: setDescricao,
+      placeholder: "Descriçao",
+      required: true
+  },
+  {
+    label: "Categoria",
+    type: "text",
+    style: "select",
+    options: [
+        { value: 'Alimentação', label: 'Alimentação' },
+        { value: 'Aluguel', label: 'Aluguel' },
+        { value: 'Bonus', label: 'Bonus' },
+        { value: 'Pets', label: 'Pets' },
+        { value: 'Compras', label: 'Compras' },
+        { value: 'Construção', label: 'Construção' },
+        { value: 'Contas', label: 'Contas' },
+        { value: 'Doação', label: 'Doação' },
+        { value: 'Educação', label: 'Educação' },
+        { value: 'Cartão', label: 'Cartão' },
+        { value: 'Imposto/multa', label: 'Imposto/multa' },
+        { value: 'Investimento', label: 'Investimento' },
+        { value: 'Lazer', label: 'Lazer' },
+        { value: 'Moradia', label: 'Moradia' },
+        { value: 'Salário', label: 'Salário' },
+        { value: 'Saúde', label: 'Saúde' },
+        { value: 'Seguro', label: 'Seguro' },
+        { value: 'Serviços', label: 'Serviços' },
+        { value: 'Transporte', label: 'Transporte' },
+        { value: 'Vestiário', label: 'Vestiário' },
+        { value: 'Outras', label: 'Outras' }
+    ],
+    value: categoriaSelecionada,
+    onChange: setCategoriaSelecionada,
+    placeholder: "Selecione a categoria",
+    required: true
+},     
+  ];
 
   function Salvar(event) {
     event.preventDefault();
@@ -64,60 +125,12 @@ function InputForm({ handleSave }) {
   return (
     <div className={styles.container}>
       
-      <form className={styles.form} onSubmit={Salvar}>
-      <section className={styles.inputForm}>
-        <input
-          className={styles.inputField}
-          type="date"
-          placeholder="Informe a data (Ex. 02/05/2023)"
-          onChange={(e) => setData(e.target.value)}/>
-          
-        <select className={SelectCategoria} value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(e.target.value)}>
-            <option value="">Selecione uma categoria</option>
-            {categorias.map((cat, index) => (
-              <option key={index} value={cat}>
-                {cat}
-              </option>
-            ))}
-        </select>
-        <input
-          className={styles.inputField}
-          type="text"
-          placeholder="Informe a descrição"
-          onChange={(e) => setDescricao(e.target.value)}/>
-          
-          <input
-          className={styles.inputField}
-          type="text"
-          placeholder="Informe o valor"
-          onChange={(e) => {
-            const valorFormatado = e.target.value.replace(',', '.');
-            setValor(Number(valorFormatado)); // Converte para número)
-          }} />
-          
-
-        <section className={styles.RadioGroup}>
-          <input
-            type="radio"
-            id="rblEntrada"
-            defaultChecked
-            name="group1"
-            onChange={() => setTipo(0)}
-          />
-          <label htmlFor="rblEntrada">Entrada</label>
-
-          <input
-            type="radio"
-            id="rblSaida"
-            name="group1"
-            onChange={() => setTipo(1)}
-          />
-          <label htmlFor="rblSaida">Saída</label>
-          </section>
-
-        <button type="submit" className="btn btn-primary">Cadastrar</button>
-        </section>
-      </form>
+      <DynamicForm
+                            title="Receitas/ Despesas"
+                            fields={inputHomeFields}
+                            buttonLabel="Adicionar Receita"
+                            onSubmit={Salvar}
+                        />
      
       </div>
   );

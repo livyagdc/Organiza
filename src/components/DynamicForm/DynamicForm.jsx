@@ -13,7 +13,7 @@ export default function DynamicForm({ title, fields, buttonLabel, onSubmit }) {
               {field.label}
               {field.required && <span>*</span>}
             </label>
-            {field.type === 'select' ? (
+            {field.style === 'select' ? (
               <select
                 className={styles['form-input']}
                 value={field.value}

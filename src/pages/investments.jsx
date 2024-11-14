@@ -72,6 +72,16 @@ export default function Investments() {
         {
             label: "Tipo de Investimento",
             type: "text",
+            style:"select",
+            options:[{
+                value: value,
+                label:"Fixa"},
+                {
+                    value: value,
+                    label:"Variavel"},
+                    {
+                        value: value,
+                        label:"ações"}],
             value: type,
             onChange: setType,
             placeholder: "Tipo de investimento",
