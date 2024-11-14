@@ -2,7 +2,7 @@ import styles from './HomeNavbar.module.css';
 import Link from 'next/link';
 
 
-const InitialNavbar = () => {
+export default function InitialNavbar() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}><Link href="/"><img src="https://res.cloudinary.com/dcbd1dnvk/image/upload/v1730427036/rganiza__2_-removebg-preview_2_rdnqbn.png" alt="logo" /></Link></div>
@@ -20,5 +20,3 @@ const InitialNavbar = () => {
         </nav>
     );
 };
-
-export default InitialNavbar;

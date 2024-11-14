@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from "react";
-import styles from "../../../components/componentsStyles/resume/homeResume.module.css"
+import styles from "@/components/resumeStyles/homeResume.module.css";
 import Resumo from "../Resumo";
 import InputForm from "../InputForm";
 import Grid from "../Grid";
 
 function Home(){
+
+    useEffect(() => {
+        const savedBudgets = JSON.parse(localStorage.getItem('budgets')) || [];
+        setBudgets(savedBudgets);
+    }, []);
 
     const [dadosFin, setDadosFin] = useState(JSON.parse(localStorage.getItem('Financeiro')) ?? []);
     const [saldo, setSaldo] = useState(0);

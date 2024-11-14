@@ -1,6 +1,6 @@
 // /resume
-import Footer from "@/components/Footer"
-import Navbar from "@/components/NavBar"
+import Footer from "@/components/Footer/Footer"
+import Navbar from "@/components/NavBar/NavBar"
 import Home from "@/components/resume/Home"
 
 import PrivateRoute from "@/components/PrivateRoute"

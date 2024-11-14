@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, RadioGroup, SelectCategoria, Input } from './styles';
-import styles from '@/components/componentsStyles/resume/homeInput.module.css'
+import styles from '@/components/resumeStyles/homeInput.module.css'
 
 function InputForm({ handleSave }) {
   const [descricao, setDescricao] = useState('');
