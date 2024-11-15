@@ -17,7 +17,6 @@ export default function Budget() {
                     <BudgetForm />
                     <BudgetChart />
                     <BudgetAlert />
-
                 </div>
                 <Footer />
             </div>

@@ -14,14 +14,16 @@ export default function BudgetForm() {
     const [budgets, setBudgets] = useState([]);
     const [category, setCategory] = useState('');
     const [plannedAmount, setPlannedAmount] = useState('');
+    const email = localStorage.getItem("userEmail");
 
-    //Carrega os dados do Local Storage
     useEffect(() => {
-        const savedBudgets = JSON.parse(localStorage.getItem('budgets')) || [];
-        setBudgets(savedBudgets);
+        if (email) {
+            const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
+            setBudgets(savedBudgets);
+        }
+        
     }, []);
 
-    //Função para salvar orçamento
     const handleSaveBudget = () => {
         if (!category || !plannedAmount) {
             alert("Por favor, preencha todos os campos.")
@@ -42,10 +44,9 @@ export default function BudgetForm() {
             return;
         }
 
-
         const updatedBudgets = [...budgets, newBudget];
         setBudgets(updatedBudgets);
-        localStorage.setItem('budgets', JSON.stringify(updatedBudgets));
+        localStorage.setItem(`budgets_${email}`, JSON.stringify(updatedBudgets));
         setCategory('');
         setPlannedAmount('');
     };
