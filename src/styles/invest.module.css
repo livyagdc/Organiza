@@ -20,7 +20,7 @@
     transition: 0.5s;
 }
 
-.investAuthForm {
+.investForm {
     display: flex;
     flex-direction: column;
     gap: 1rem;

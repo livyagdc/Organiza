@@ -1,4 +1,4 @@
-import styles from "./componentsStyles/Footer.module.css"
+import styles from "./Footer.module.css"
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 

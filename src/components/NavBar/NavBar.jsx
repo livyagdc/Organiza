@@ -1,7 +1,7 @@
-import styles from './componentsStyles/Navbar.module.css';
+import styles from './Navbar.module.css';
 import Link from 'next/link';
-import { MdAdd, MdBarChart, MdOutlineHome, MdRemove, MdTrendingUp } from 'react-icons/md'
-import UserMenu from './UserMenu';
+import { MdAdd, MdBarChart, MdOutlineHome, MdMonetizationOn, MdTrendingUp } from 'react-icons/md'
+import UserMenu from '@/components/UserMenu/UserMenu';
 
 
 export default function Navbar() {
@@ -13,13 +13,11 @@ export default function Navbar() {
 
                 <Link href="/dashboard"> <MdOutlineHome /> Home</Link>
 
-                <Link href="/receitas"> <MdAdd /> Receitas</Link>
+                <Link href="/budget"> <MdBarChart /> Orçamento</Link>
 
-                <Link href="/despesas"> <MdRemove /> Despesas</Link>
+                <Link href="/resume"> <MdMonetizationOn/> Despesas/Receitas</Link>
 
-                <Link href="/orcamento"> <MdBarChart /> Orçamento</Link>
-
-                <Link href="/investimentos"> <MdTrendingUp /> Investimentos</Link>
+                <Link href="/investments"> <MdTrendingUp /> Investimentos</Link>
 
             </div>
 

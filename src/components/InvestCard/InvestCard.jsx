@@ -1,9 +1,9 @@
 // components/InvestmentCard.js
 import { useState } from "react";
-import styles from "./componentsStyles/InvestCard.module.css";
+import styles from "./InvestCard.module.css";
 import { MdDeleteForever } from "react-icons/md";
 
-export default function InvestCard({ id, type, value, institution, growthTax, growth, onDelete }) {  
+export default function InvestCard({ id, type, value, institution, growthTax, growth, date, onDelete }) {  
     const [showModal, setShowModal] = useState(false);
 
     const handleDelete = () => {
@@ -29,6 +29,7 @@ export default function InvestCard({ id, type, value, institution, growthTax, gr
             </div>
             <p><strong>Instituição:</strong> {institution}</p>
             <p><strong>Valor:</strong> R$ {value.toFixed(2)}</p>
+            <p><strong>Data:</strong> {date}</p>
             <p><strong>Taxa de crescimento:</strong> {growthTax}%</p>
             <p><strong>Crescimento esperado em um ano:</strong><span className={styles.growthSpan}> + R$ {growth.toFixed(2)}</span></p>
 
