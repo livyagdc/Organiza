@@ -1,101 +1,76 @@
 import { useState, useEffect } from 'react';
+import DynamicForm from "@/components/DynamicForm/DynamicForm";
 import style from "./BudgetForm.module.css";
-
-// Lista de categorias predefinidas
-const categories = [
-    "Alimentação", "Animais de estimação", "Compras", "Construção", "Contas",
-    "Doações e caridade", "Educação", "Fatura Cartão", "Gift card",
-    "Imposto, juros e multa", "Investimento", "Lazer", "Mercado",
-    "Moradia", "Recarga", "Saúde", "Seguros", "Serviços",
-    "Transporte", "Vestuário", "Viagem", "Outras saídas"
-];
+import useBudgets from '@/hooks/useBudgets';
 
 export default function BudgetForm() {
-    const [budgets, setBudgets] = useState([]);
-    const [category, setCategory] = useState('');
-    const [plannedAmount, setPlannedAmount] = useState('');
-    const email = localStorage.getItem("userEmail");
 
-    useEffect(() => {
-        if (email) {
-            const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
-            setBudgets(savedBudgets);
-        }
-        
-    }, []);
+    const {
+        budgets,
+        category,
+        plannedAmount,
+        editBudgetId,
+        setCategory,
+        setPlannedAmount,
+        handleSaveBudget,
+        handleEditBudget,
+        handleDeleteBudget,
+    } = useBudgets();
 
-    const handleSaveBudget = () => {
-        if (!category || !plannedAmount) {
-            alert("Por favor, preencha todos os campos.")
-            return;
-        }
+    const budgetFields = [
+        {
+            label: "Categoria",
+            type: "text",
+            style: "select",
+            options: [
+                { value: "Alimentação", label: "Alimentação" },
+                { value: "Animais de estimação", label: "Animais de estimação" },
+                { value: "Compras", label: "Compras" },
+                { value: "Construção", label: "Construção" },
+                { value: "Contas", label: "Contas" },
+                { value: "Doações e caridade", label: "Doações e caridade" },
+                { value: "Educação", label: "Educação" },
+                { value: "Extra", label: "Extra" },
+                { value: "Fatura Cartão", label: "Fatura Cartão" },
+                { value: "Gift card", label: "Gift card" },
+                { value: "Imposto, juros e multa", label: "Imposto, juros e multa" },
+                { value: "Investimento", label: "Investimento" },
+                { value: "Lazer", label: "Lazer" },
+                { value: "Mercado", label: "Mercado" },
+                { value: "Moradia", label: "Moradia" },
+                { value: "Recarga", label: "Recarga" },
+                { value: "Saúde", label: "Saúde" },
+                { value: "Seguros", label: "Seguros" },
+                { value: "Serviços", label: "Serviços" },
+                { value: "Transporte", label: "Transporte" },
+                { value: "Vestuário", label: "Vestuário" },
+                { value: "Viagem", label: "Viagem" },
+                { value: "Outra", label: "Outra" },
+            ],
+            value: category,
+            onChange: setCategory,
+            required: true,
+        },
+        {
+            label: "Valor planejado",
+            type: "number",
+            value: plannedAmount,
+            onChange: setPlannedAmount,
+            placeholder: "Valor planejado",
+            required: true,
+        },
+    ];
 
-        const newBudget = {
-            budgetId: Date.now(),
-            category,
-            plannedAmount: parseFloat(plannedAmount),
-            spentAmount: 0,
-        };
 
-        //Evitar duplicação de categorias
-        const existingBudget = budgets.find(budget => budget.category === category);
-        if (existingBudget) {
-            alert("Categoria já possui um orçamento definido. Por favor, edite o existente.");
-            return;
-        }
-
-        const updatedBudgets = [...budgets, newBudget];
-        setBudgets(updatedBudgets);
-        localStorage.setItem(`budgets_${email}`, JSON.stringify(updatedBudgets));
-        setCategory('');
-        setPlannedAmount('');
-    };
 
     return (
         <div className={style.budgetFormDiv}>
-            <section className={style.budgetFormSection}>
-                <h2 className={style.budgetFormTitle}>Definir Orçamento</h2>
-
-                <select className={style.budgetFormSelect}
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value="" disabled>Selecione uma categoria</option>
-                    {categories.map((cat, index) => (
-                        <option key={index} value={cat}>{cat}</option>
-                    ))}
-                </select>
-
-                <input className={style.budgetFormInput}
-                    type="number"
-                    min="0"
-                    placeholder="Valor planejado"
-                    value={plannedAmount}
-                    onChange={(e) => setPlannedAmount(e.target.value)}
-                />
-
-                <button className={style.budgetFormButton} onClick={handleSaveBudget}>Salvar Orçamento</button>
-
-                <h3 className={style.budgetListTitle}>Orçamento Definidos</h3>
-                <table className={style.budgetTable}>
-                    <thead>
-                        <tr>
-                            <th>Categoria</th>
-                            <th>Planejado (R$)</th>
-                            <th>Gastos (R$)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {budgets.map((budget) => (
-                            <tr key={budget.budgetId}>
-                                <td>{budget.category}</td>
-                                <td>{budget.plannedAmount}</td>
-                                <td>{budget.spentAmount}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </section>
+            <DynamicForm
+                title="Definir Orçamento"
+                fields={budgetFields}
+                buttonLabel="Salvar Orçamento"
+                onSubmit={handleSaveBudget}
+            />
         </div>
     );
 };

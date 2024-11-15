@@ -6,9 +6,9 @@ export default function BudgetChart() {
     const [budgets, setBudgets] = useState([]);
 
     useEffect(() => {
-        // Verificar se estamos no lado do cliente
-        if (typeof window !== "undefined") {
-            const savedBudgets = JSON.parse(localStorage.getItem('budgets')) || [];
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
             if (Array.isArray(savedBudgets)) {
                 setBudgets(savedBudgets);
             }

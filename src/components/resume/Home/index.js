@@ -4,7 +4,6 @@ import Resumo from "../Resumo";
 import InputForm from "../InputForm";
 import Grid from "../Grid";
 
-import DynamicForm from "@/components/DynamicForm/DynamicForm"
 
 function Home() {
     const [dadosFin, setDadosFin] = useState([]);

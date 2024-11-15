@@ -79,7 +79,6 @@ export default function useInvestments() {
             ],
             value: type,
             onChange: setType,
-            placeholder: "Tipo de investimento",
             required: true,
         },
         {

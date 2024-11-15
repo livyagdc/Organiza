@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './DynamicForm.module.css'; // Assumindo que o arquivo CSS esteja nomeado como form.module.css
+import styles from './DynamicForm.module.css';
 
 export default function DynamicForm({ title, fields, buttonLabel, onSubmit }) {
   return (
     <div className={styles['form-container']}>
       <h2 className={styles['form-title']}>{title}</h2>
       <form className={styles['form']} onSubmit={onSubmit}>
-        
+
         {fields.map((field, index) => (
           <div key={index} className={styles['input-div']}>
             <label className={styles['label']}>
@@ -16,9 +16,13 @@ export default function DynamicForm({ title, fields, buttonLabel, onSubmit }) {
             {field.style === 'select' ? (
               <select
                 className={styles['form-input']}
+            
                 value={field.value}
                 onChange={(e) => field.onChange(e.target.value)}
               >
+                <option value="" disabled>
+                  {field.placeholder || "Selecione uma opção"}
+                </option>
                 {field.options.map((option, index) => (
                   <option key={index} value={option.value}>
                     {option.label}

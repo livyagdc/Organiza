@@ -2,6 +2,7 @@ import React from 'react';
 import { MdDelete, MdArrowCircleUp, MdArrowCircleDown } from "react-icons/md";
 import { format, parse, isValid } from 'date-fns';
 import { Table, Th, Td } from './styles';
+import DeleteButton from '@/components/DeleteButton/DeleteButton';
 
 function Grid({ dadosFin, onDelete }) {
   const formatarData = (data) => {
@@ -42,7 +43,7 @@ function Grid({ dadosFin, onDelete }) {
                 )}
               </Td>
               <Td alignCenter>
-                <MdDelete onClick={() => onDelete(index)} />
+                <DeleteButton onClick={() => onDelete(index)} />
               </Td>
             </tr>
           );

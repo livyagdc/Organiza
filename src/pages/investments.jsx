@@ -7,7 +7,7 @@ import DynamicForm from "@/components/DynamicForm/DynamicForm";
 import InvestmentList from "@/components/InvestList/InvestmentList";
 import useInvestments from "@/hooks/useInvestments"
 
-export default function InvestmentsPage() {
+export default function Investments() {
     const {
         investments,
         handleAddInvestment,

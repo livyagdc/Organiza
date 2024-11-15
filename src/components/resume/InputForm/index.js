@@ -11,44 +11,44 @@ function InputForm({ handleSave }) {
   const [tipo, setTipo] = useState(0);
   const [categoriaSelecionada, setCategoriaSelecionada] = useState(''); // Nova categoria selecionada
   const [categorias, setCategorias] = useState([
-    'Alimentação', 
+    'Alimentação',
     'Aluguel',
     'Bonus',
     'Pets',
-    'Compras', 
-    'Construção', 
+    'Compras',
+    'Construção',
     'Contas',
-    'Doação', 
-    'Educação', 
-    'Cartão', 
-    'Imposto/multa', 
-    'Investimento', 
-    'Lazer', 
+    'Doação',
+    'Educação',
+    'Cartão',
+    'Imposto/multa',
+    'Investimento',
+    'Lazer',
     'Moradia',
-    'Salário', 
-    'Saúde', 
-    'Seguro', 
-    'Serviços', 
+    'Salário',
+    'Saúde',
+    'Seguro',
+    'Serviços',
     'Transporte',
     'Vestiário',
     'Outras']);
 
-    const inputHomeFields = [
-      {
-          label: "Data",
-          type: "date",
-          value: data,
-          onChange: setData,
-          placeholder: "Data",
-          required: true
-      },
-      {
-        label: "Valor",
-        type: "number",
-        value: valor,
-        onChange: setValor,
-        placeholder: "Insira o Valor",
-        required: true
+  const inputHomeFields = [
+    {
+      label: "Data",
+      type: "date",
+      value: data,
+      onChange: setData,
+      placeholder: "Data",
+      required: true
+    },
+    {
+      label: "Valor",
+      type: "number",
+      value: valor,
+      onChange: setValor,
+      placeholder: "Insira o Valor",
+      required: true
     },
     {
       label: "Descrição",
@@ -57,12 +57,12 @@ function InputForm({ handleSave }) {
       onChange: setDescricao,
       placeholder: "Descriçao",
       required: true
-  },
-  {
-    label: "Categoria",
-    type: "text",
-    style: "select",
-    options: [
+    },
+    {
+      label: "Categoria",
+      type: "text",
+      style: "select",
+      options: [
         { value: 'Alimentação', label: 'Alimentação' },
         { value: 'Aluguel', label: 'Aluguel' },
         { value: 'Bonus', label: 'Bonus' },
@@ -84,12 +84,12 @@ function InputForm({ handleSave }) {
         { value: 'Transporte', label: 'Transporte' },
         { value: 'Vestiário', label: 'Vestiário' },
         { value: 'Outras', label: 'Outras' }
-    ],
-    value: categoriaSelecionada,
-    onChange: setCategoriaSelecionada,
-    placeholder: "Selecione a categoria",
-    required: true
-},     
+      ],
+      value: categoriaSelecionada,
+      onChange: setCategoriaSelecionada,
+      placeholder: "Selecione a categoria",
+      required: true
+    },
   ];
 
   function Salvar(event) {
@@ -117,22 +117,22 @@ function InputForm({ handleSave }) {
     setData('');
     setValor(0);
     setTipo(0);
-    
-    
-    
+
+
+
   }
 
   return (
     <div className={styles.container}>
-      
+
       <DynamicForm
-                            title="Receitas/ Despesas"
-                            fields={inputHomeFields}
-                            buttonLabel="Adicionar Receita"
-                            onSubmit={Salvar}
-                        />
-     
-      </div>
+        title="Receitas/ Despesas"
+        fields={inputHomeFields}
+        buttonLabel="Adicionar Receita"
+        onSubmit={Salvar}
+      />
+
+    </div>
   );
 }
 
