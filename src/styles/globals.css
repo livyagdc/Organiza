@@ -32,12 +32,13 @@
   box-sizing: border-box;
 }
 
-body {
-  width: 100%;
-  min-height: 100vh;
+:focus {
+  outline: 2px solid var(--blue);
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   color: var(--foreground);
   background: var(--background);
   background: linear-gradient(to right, var(--background), var(--gradient));

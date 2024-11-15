@@ -1,9 +1,9 @@
-import styles from "@/components/componentsStyles/UserMenu.module.css";
+import styles from "./UserMenu.module.css";
 import { useEffect, useState } from "react";
 import { MdEdit, MdLogout, MdOutlineAccountCircle, MdSettings } from "react-icons/md";
 import Link from 'next/link';
 import logout from "@/pages/api/auth/logout";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "@/components/PrivateRoute";
 import { useRouter } from "next/router";
 
 export default function UserMenu() {
