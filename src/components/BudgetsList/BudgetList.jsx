@@ -6,11 +6,6 @@ export default function BudgetList() {
 
     const {
         budgets,
-        category,
-        plannedAmount,
-        setCategory,
-        setPlannedAmount,
-        handleSaveBudget,
         handleDeleteBudget,
     } = useBudgets();
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdDelete, MdArrowCircleUp, MdArrowCircleDown } from "react-icons/md";
+import { MdArrowCircleUp, MdArrowCircleDown } from "react-icons/md";
 import { format, parse, isValid } from 'date-fns';
 import { Table, Th, Td } from './styles';
 import DeleteButton from '@/components/DeleteButton/DeleteButton';

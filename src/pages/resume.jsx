@@ -9,11 +9,11 @@ export default function Resume() {
     return (
         <PrivateRoute>
             <div className="cont">
-            <Navbar />
+                <Navbar />
                 <div className="main">
-                <Home/>
+                    <Home />
                 </div>
-            <Footer />
+                <Footer />
             </div>
         </PrivateRoute>
     )

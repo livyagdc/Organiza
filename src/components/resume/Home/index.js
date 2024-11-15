@@ -63,9 +63,10 @@ function Home() {
     return (
         <div className="main">
             <h1 className={styles.resumeTitle}>Resumo</h1>
+            <Resumo saldo={saldo} entrada={entrada} saida={saida} />
             <div className={styles.containerSection}>
                 <h2 className={styles.secundaryTitle}>Gerenciar Gastos</h2>
-                <Resumo saldo={saldo} entrada={entrada} saida={saida} />
+                
                 <div className={styles.formContainer}>
                     <InputForm handleSave={handleSave} />
                     <InputForm handleSave={handleSave} /> 

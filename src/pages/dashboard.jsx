@@ -17,7 +17,6 @@ export default function Dashboard() {
                             <BudgetChart />
                         </section>
                     </div>
-
                 </div>
                 <Footer />
             </div>
