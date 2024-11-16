@@ -1,4 +1,4 @@
-import useConfig from "@/hooks/useConfig2";
+import useConfig from "@/hooks/useConfig";
 import DynamicForm from "../DynamicForm/DynamicForm";
 import styles from "./NotificationForm.module.css";
 

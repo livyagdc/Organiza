@@ -1,6 +1,6 @@
 import React from 'react';
 import NotificationCard from "../NotificationCard/NotificationCard";
-import useConfig from "@/hooks/useConfig2";
+import useConfig from "@/hooks/useConfig";
 import styles from "./NotificationList.module.css";
 
 export default function NotificationList() {
