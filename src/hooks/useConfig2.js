@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 
-// Função para solicitar permissão de notificações
-const requestNotificationPermission = () => {
+
+const requestNotificationPermisson = () => {
     if ('Notification' in window) {
         Notification.requestPermission().then(permission => {
             if (permission !== 'granted') {
                 console.log('Permissão para notificações negada');
             }
-        });
-    }
+        })
+    };
 };
 
-// Função para mostrar uma notificação
 const showNotification = (title, body) => {
     if (Notification.permission === 'granted') {
         new Notification(title, {
             body,
-            icon: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/solid/bell.svg',
+            icon: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/png/bell.png',
         });
     } else {
         console.log('Permissão para notificações não concedida');
@@ -30,9 +29,8 @@ export default function useConfig() {
     const [date, setDate] = useState('');
 
     useEffect(() => {
-        // Solicitar permissão ao carregar o componente
-        requestNotificationPermission();
-        
+        requestNotificationPermisson();
+
         const email = localStorage.getItem('userEmail');
         if (email) {
             const savedNotifications = JSON.parse(localStorage.getItem(`notifications_${email}`) || '[]');
@@ -41,41 +39,32 @@ export default function useConfig() {
     }, []);
 
     useEffect(() => {
-        // Checar se as notificações precisam ser disparadas
         const checkNotifications = () => {
             const now = new Date();
-            const currentDateString = now.toISOString().slice(0, 10); // 'YYYY-MM-DD'
 
             const updatedNotifications = notifications.map(notification => {
                 const notificationDate = new Date(notification.date);
-                const notificationDateString = notificationDate.toISOString().slice(0, 10); // 'YYYY-MM-DD'
-
-                // Verifica se a data atual é igual à data da notificação
-                if (currentDateString === notificationDateString && !notification.notified) {
-                    // Dispara a notificação
+                
+                if (now >= notificationDate && !notification.notified) {
                     showNotification(notification.title, `Lembrete: ${notification.type}`);
-                    // Marca a notificação como 'notificada'
-                    return { ...notification, notified: true };
+                    return { ...notification, notified: true};
                 }
                 return notification;
             });
 
-            // Filtra as notificações para manter apenas as não notificadas
             const notificationsToKeep = updatedNotifications.filter(notification => !notification.notified);
 
             setNotifications(notificationsToKeep);
 
-            // Salva as notificações restantes no localStorage apenas se necessário
             const email = localStorage.getItem('userEmail');
             if (email) {
                 localStorage.setItem(`notifications_${email}`, JSON.stringify(notificationsToKeep));
             }
+
         };
 
-        // Checar a cada minuto (60000ms)
         const interval = setInterval(checkNotifications, 10000);
 
-        // Limpar o intervalo quando o componente for desmontado
         return () => clearInterval(interval);
     }, [notifications]);
 
@@ -85,7 +74,6 @@ export default function useConfig() {
             type,
             title,
             date,
-            enabled: true,
             notified: false,
         };
 
@@ -96,7 +84,6 @@ export default function useConfig() {
         if (email) {
             localStorage.setItem(`notifications_${email}`, JSON.stringify(updatedNotifications));
         }
-
         setTitle('');
         setType('');
         setDate('');
@@ -109,10 +96,10 @@ export default function useConfig() {
 
         const email = localStorage.getItem('userEmail');
         if (email) {
-            localStorage.setItem(`notifications_${email}`, JSON.stringify(updatedNotifications));
+            localStorage.setItem(`notificationd_${email}`, JSON.stringify(updatedNotifications));
         }
     };
-
+    
     return {
         notifications,
         title,
@@ -121,8 +108,8 @@ export default function useConfig() {
         setType,
         date,
         setDate,
-        handleSave,
         handleAddNotification,
         handleDeleteNotification,
     };
 }
+
