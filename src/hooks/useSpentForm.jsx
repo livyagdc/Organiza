@@ -1,26 +1,26 @@
 import { useState } from 'react';
 
-export default function useIncomeForm(handleSaveIncome) {
-    const [descricaoIncome, setDescricaoIncome] = useState('');
-    const [dataIncome, setDataIncome] = useState('');
-    const [income, setIncome] = useState();
-    const [tipo, setTipo] = useState(0);
-    const [categoriaSelecionadaIncome, setCategoriaSelecionadaIncome] = useState('');
+export default function useSpentForm(handleSaveSpent) {
+    const [descricaoSpent, setDescricaoSpent] = useState('');
+    const [dataSpent, setDataSpent] = useState('');
+    const [spent, setSpent] = useState();
+    const [tipo, setTipo] = useState(1);
+    const [categoriaSelecionadaSpent, setCategoriaSelecionadaSpent] = useState('');
 
-    const inputIncomeFields = [
+    const inputSpentFields = [
         {
             label: "Data",
             type: "date",
-            value: dataIncome,
-            onChange: setDataIncome,
+            value: dataSpent,
+            onChange: setDataSpent,
             placeholder: "Data",
             required: true,
         },
         {
             label: "Descrição",
             type: "text",
-            value: descricaoIncome,
-            onChange: setDescricaoIncome,
+            value: descricaoSpent,
+            onChange: setDescricaoSpent,
             placeholder: "Descrição",
             required: true,
         },
@@ -53,49 +53,49 @@ export default function useIncomeForm(handleSaveIncome) {
                 { value: "Viagem", label: "Viagem" },
                 { value: "Outra", label: "Outra" }
             ],
-            value: categoriaSelecionadaIncome,
-            onChange: setCategoriaSelecionadaIncome,
+            value: categoriaSelecionadaSpent,
+            onChange: setCategoriaSelecionadaSpent,
             placeholder: "Selecione a categoria",
             required: true,
         },
         {
-            label: "Valor (Entrada)",
+            label: "Valor (Saída)",
             type: "number",
-            value: income,
-            onChange: setIncome,
-            placeholder: "Insira o valor da entrada",
+            value: spent,
+            onChange: setSpent,
+            placeholder: "Insira o valor da saída",
             required: true,
         },
     ];
 
-    function SaveIncome(event) {
+    function SaveSpent(event) {
         event.preventDefault();
 
-        if (!descricaoIncome || !dataIncome || income <= 0) {
+        if (!descricaoSpent || !dataSpent || spent <= 0) {
             alert('Por favor, preencha todos os campos corretamente.');
             return;
         }
 
         const dadosFinanceiro = {
-            dataIncome,
-            categoriaSelecionadaIncome,
-            descricaoIncome,
-            income,
+            dataSpent,
+            categoriaSelecionadaSpent,
+            descricaoSpent,
+            spent,
             tipo,
         };
 
-    handleSaveIncome(dadosFinanceiro);
+    handleSaveSpent(dadosFinanceiro);
 
     // Resetando os campos do formulário
-    setDescricaoIncome('');
-    setCategoriaSelecionadaIncome('');
-    setDataIncome('');
-    setIncome(0);
-    setTipo(0);
+    setDescricaoSpent('');
+    setCategoriaSelecionadaSpent('');
+    setDataSpent('');
+    setSpent(0);
+    setTipo(1);
 }
 
     return {
-        inputIncomeFields,
-        SaveIncome,
+        inputSpentFields,
+        SaveSpent,
     };
 }
