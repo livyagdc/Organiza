@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './DynamicForm.module.css';
 
-export default function DynamicForm({ title, fields, buttonLabel, onSubmit }) {
+export default function DynamicForm({ title, fields, buttonLabel, onSubmit, state }) {
+  const formStateClass = state === 'spent' ? styles.spentState : state === 'income' ? styles.inputState : '';
   return (
-    <div className={styles['form-container']}>
+    <div className={`${styles['form-container']} ${formStateClass}`}>
       <h2 className={styles['form-title']}>{title}</h2>
       <form className={styles['form']} onSubmit={onSubmit}>
 
@@ -16,7 +17,7 @@ export default function DynamicForm({ title, fields, buttonLabel, onSubmit }) {
             {field.style === 'select' ? (
               <select
                 className={styles['form-input']}
-            
+
                 value={field.value}
                 onChange={(e) => field.onChange(e.target.value)}
               >

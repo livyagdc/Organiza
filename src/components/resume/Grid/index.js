@@ -1,8 +1,8 @@
 import React from 'react';
 import { MdArrowCircleUp, MdArrowCircleDown } from "react-icons/md";
 import { format, parse, isValid } from 'date-fns';
-import { Table, Th, Td } from './styles';
 import DeleteButton from '@/components/DeleteButton/DeleteButton';
+import styles from '@/components/resume/Grid/index.module.css'
 
 function Grid({ dadosFin, onDelete }) {
   const formatarData = (data) => {
@@ -15,41 +15,49 @@ function Grid({ dadosFin, onDelete }) {
   
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <Th width={20}>Data</Th>
-          <Th width={30}>Categoria</Th>
-          <Th width={30}>Descrição</Th>
-          <Th width={40}>Valor</Th>
-          <Th width={40} alignCenter>Tipo</Th>
-          
-        </tr>
-      </thead>
+    <div>
+      <table className={styles.resumeTable}>
+        <thead>
+          <tr>
+            <th width={20}>Data</th>
+            <th width={30}>Categoria</th>
+            <th width={30}>Descrição</th>
+            <th width={40}>Valor</th>
+            <th width={40} alignCenter>Tipo</th>
+            
+          </tr>
+        </thead>
 
-      <tbody>
-        {dadosFin?.map((dadosFin, index) => {
-          return (
-            <tr key={index}>
-              <Td>{formatarData(dadosFin.data)}</Td> {/* Usando a função de formatação */}
-              <Td>{dadosFin.categoriaSelecionada}</Td>
-              <Td>{dadosFin.descricao}</Td>
-              <Td>R${Math.abs(dadosFin.valor).toFixed(2)}</Td>
-              <Td alignCenter>
-                {dadosFin.tipo === 1 ? (
-                  <MdArrowCircleDown color="red" />
-                ) : (
-                  <MdArrowCircleUp color="green" />
-                )}
-              </Td>
-              <Td alignCenter>
+        <tbody>
+          {dadosFin?.map((dadosFin, index) => {
+            return (
+              <tr key={index}>
+                <td>{formatarData(dadosFin.data)}</td> {/* Usando a função de formatação */}
+                <td>{dadosFin.categoriaSelecionada}</td>
+                <td>{dadosFin.descricao}</td>
+                <td>R${Math.abs(dadosFin.valor).toFixed(2)}</td>
+                <td alignCenter>
+                  
+                  <div className={styles.categoryCell}>
+                  {dadosFin.tipo === 1 ? (
+                    <MdArrowCircleDown color="red" />
+                  ) : (
+                    <MdArrowCircleUp color="green" />
+                  )}
                 <DeleteButton onClick={() => onDelete(index)} />
-              </Td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
+                </div>
+                </td>
+                
+                
+                
+              </tr>
+              
+            );
+            
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

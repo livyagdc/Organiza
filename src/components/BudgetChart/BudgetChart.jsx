@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
 import style from "./BudgetChart.module.css";
+import useIncomeHome from '@/hooks/useIncomeHome';
 
 export default function BudgetChart() {
     const [budgets, setBudgets] = useState([]);
+
+    const {
+        dadosFin
+            }= useIncomeHome()
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
@@ -15,9 +20,25 @@ export default function BudgetChart() {
         }
     }, []);
 
+    const mergedData = budgets.map(budget => {
+        // Filtrar os itens de anotherData com a mesma category
+        const matchingItems = dadosFin.filter(item => item.categoriaSelecionada === budget.category);
+    
+        // Somar os valores de spentAmount
+        const totalSpentAmount = matchingItems.reduce((acc, item) => acc + item.valor, 0);
+    
+        // Retornar o objeto budget com spentAmount incluído
+        return {
+            ...budget,
+            spentAmount: totalSpentAmount,
+        };
+    });
+    
+    console.log(mergedData);
+
     return (
         <div className={style.chartContainer}>
-            <BarChart width={600} height={300} data={budgets}>
+            <BarChart width={600} height={300} data={mergedData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="category" />
                 <YAxis />
