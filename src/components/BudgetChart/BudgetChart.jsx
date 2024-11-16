@@ -38,7 +38,7 @@ export default function BudgetChart() {
     console.log(mergedData);
 
     return (
-        <div className={style.chartContainer}>
+        <div>
             <BarChart width={600} height={300} data={mergedData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="category" />
