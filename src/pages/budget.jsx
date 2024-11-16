@@ -5,23 +5,10 @@ import BudgetList from "@/components/BudgetsList/BudgetList";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/NavBar/NavBar";
 import PrivateRoute from "@/components/PrivateRoute";
-import useBudgets from "@/hooks/useBudgets";
 import styles from "@/styles/budget.module.css"
 
 
 export default function Budget() {
-
-    const {
-        budgets,
-        category,
-        plannedAmount,
-        editBudgetId,
-        setCategory,
-        setPlannedAmount,
-        handleSaveBudget,
-        handleEditBudget,
-        handleDeleteBudget,
-    } = useBudgets();
 
     return (
         <PrivateRoute>

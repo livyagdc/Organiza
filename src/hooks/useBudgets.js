@@ -4,7 +4,6 @@ export default function useBudgets() {
     const [budgets, setBudgets] = useState([]);
     const [category, setCategory] = useState('');
     const [plannedAmount, setPlannedAmount] = useState('');
-    const [editBudgetId, setEditBudgetId] = useState(null);
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
@@ -22,8 +21,6 @@ export default function useBudgets() {
 
         const email = localStorage.getItem("userEmail");
 
-
-        // Criar novo orçamento
         const newBudget = {
             budgetId: Date.now(),
             category,
