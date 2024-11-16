@@ -1,6 +1,7 @@
 import styles from "./IncomeForm.module.css";
 
 export default function IncomeForm() {
+    
     const incomeFormFields = [
         {
             label: "Data",
