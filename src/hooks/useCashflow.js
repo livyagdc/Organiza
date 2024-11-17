@@ -1,11 +1,12 @@
 'use client';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function useCashflow() {
-    const [cashflow, setCashflow] = useState({ Incomes: [], Extenpes: [] });
+    const [cashflow, setCashflow] = useState({ Incomes: [], Expenses: [] });
     const [balance, setBalance] = useState(0);
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
+    const [investments, setInvestments] = useState(0);
 
     useEffect(() => {
         // Essa parte aqui pega o fluxo de caixa que tá no localStorage do usuário logado
@@ -22,9 +23,14 @@ export default function useCashflow() {
             const totalExpenses = cashflow.Expenses.reduce((acc, cur) => acc + cur.value, 0);
             const totalBalance = totalIncomes - totalExpenses;
 
+            const totalInvestments = cashflow.Expenses
+                .filter(expense => expense.category === "Investimento")
+                .reduce((acc, cur) => acc + cur.value, 0);
+
             setIncome(totalIncomes);
             setExpense(totalExpenses);
             setBalance(totalBalance);
+            setInvestments(totalInvestments);
         }
     }, [cashflow]);
 
@@ -69,9 +75,10 @@ export default function useCashflow() {
         balance,
         income,
         expense,
+        investments,
         handleSaveIncome,
         handleSaveExpense,
-        handleDelete
+        handleDelete,
     };
 
 }

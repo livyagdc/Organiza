@@ -6,15 +6,11 @@ import useBudgets from '@/hooks/useBudgets';
 export default function BudgetForm() {
 
     const {
-        budgets,
         category,
         plannedAmount,
-        editBudgetId,
         setCategory,
         setPlannedAmount,
         handleSaveBudget,
-        handleEditBudget,
-        handleDeleteBudget,
     } = useBudgets();
 
     const budgetFields = [

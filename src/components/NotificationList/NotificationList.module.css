@@ -1,0 +1,13 @@
+/* NotificationList.module.css */
+.notificationsSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+}
+
+.notificationsSection p {
+    text-align: center;
+    color: var(--zinc-600);
+    font-size: 1.1rem;
+}

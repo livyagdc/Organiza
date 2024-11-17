@@ -1,0 +1,39 @@
+/* NotificationCard.module.css */
+.card {
+    border: 1px solid var(--zinc-400);
+    border-radius: 8px;
+    padding: 1.6rem;
+    margin: 0.8rem;
+    background-color: white;
+    max-width: 30rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cardTitle {
+    font-size: 1.4em;
+    color: var(--zinc-700);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    margin: 0.4rem 0;
+    color: var(--zinc-500);
+    font-size: 1rem;
+}
+
+.card p strong {
+    color: var(--zinc-700);
+    font-weight: bold;
+}
+
+.cardFooter {
+    margin-top: 1rem;
+    text-align: right;
+}
