@@ -9,7 +9,7 @@ import styles from "@/styles/dashboard.module.css";
 import Resumo from "@/components/resume/Resumo";
 import useIncomeHome from "@/hooks/useIncomeHome";
 import SpentChart from "@/components/SpentChart/spentChart";
-import IncomeChart from "@/components/incomeChart/incomeChart";
+import IncomeChart from "@/components/incomeChart/IncomeChart";
 import Grid from "@/components/resume/Grid";
 import { MdInsertDriveFile } from 'react-icons/md';
 
