@@ -26,7 +26,7 @@ export default function BudgetList() {
                     <tbody>
                         {budgets.map((budget) => {
                             // Calcular os gastos totais para a categoria do orçamento
-                            const spentList = dadosFin.filter(item => item.tipo === 1); // Supondo que tipo 1 seja gasto
+                            const spentList = dadosFin.filter(item => item.tipo === 1);
                             const matchingItems = spentList.filter(item => item.categoriaSelecionadaSpent === budget.category);
 
                             const totalSpentAmount = matchingItems.reduce((acc, item) => acc + Number(item.spent), 0);

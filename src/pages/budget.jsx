@@ -1,5 +1,4 @@
 import BudgetAlert from "@/components/BudgetAlert/BudgetAlert";
-import BudgetChart from "@/components/BudgetChart/BudgetChart";
 import BudgetForm from "@/components/BudgetForm/BudgetForm";
 import BudgetList from "@/components/BudgetsList/BudgetList";
 import Footer from "@/components/Footer/Footer";
