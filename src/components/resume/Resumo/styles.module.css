@@ -1,6 +1,6 @@
 /* Resumo */
 
-.ResumoFinanceiro {
+.resumoFinanceiro {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -42,4 +42,18 @@
 
 .itens:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .resumoFinanceiro {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 50px;
+    flex-direction: column;
+  }
+
+  .itens {
+    width: 50%;
+  }
 }

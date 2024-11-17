@@ -21,7 +21,7 @@
 .homeTextSection h1 {
     font-size: 4rem; 
     color: black; 
-    font-weight: 700; 
+    font-weight: bold; 
     margin-bottom: 3rem;
     line-height: 1.2;
 }
@@ -76,5 +76,28 @@
     .homeImageSection {
         width: 100%; 
         margin-bottom: 2rem;
+    }
+
+    .homeTextSection h1 {
+        font-size: 2rem; 
+        color: black; 
+        font-weight: bold; 
+        margin-bottom: 1rem;
+    }
+
+    .homeTextSection li {
+        font-size: small;
+        margin: 0.2rem 0;
+    }
+
+    .homeTextSection h2 {
+        font-size: small;
+        margin: 0.5rem;
+    }
+
+    .homeTextSection {
+        border-radius: 8px;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
     }
 }

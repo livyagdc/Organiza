@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 // Cores para os setores
 const cores = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A569BD', '#E74C3C'];
 
 function SpentChart({ dadosFin }) {
+    const [widthWindow, setWidthWindow] = useState(0);
+
+    useEffect(() => {
+        setWidthWindow(window.innerWidth);
+    }, []);
+
     const agruparPorCategoria = (dadosFin) => {
         return dadosFin
             .filter(item => item.tipo === 1) // Filtrar apenas os dados de "spent" (tipo === 1)
@@ -31,8 +37,24 @@ function SpentChart({ dadosFin }) {
         dadosAgrupados.push({ name: 'Sem Dados', value: 0 });
     }
 
+    const isResponsive = () => {
+        if (widthWindow <= 600) {
+            return Boolean(false)
+        } else {
+            return Boolean(true)
+        }
+    }
+
+    const widthGraph = (widthWindow) => {
+        if (widthWindow <= 600) {
+            return Number(250)
+        } else {
+            return Number(500)
+        }
+    }
+
     return (
-        <PieChart width={500} height={332}>
+        <PieChart width={widthGraph(widthWindow)} height={332}>
             <Pie
                 data={dadosAgrupados}
                 dataKey="value"
@@ -42,7 +64,7 @@ function SpentChart({ dadosFin }) {
                 innerRadius={60}
                 outerRadius={120}
                 fill="#8884d8"
-                label={({ name, value }) => `R$${value.toFixed(2)}`} // Exibir dentro das fatias
+                label={isResponsive() ? ({ value }) => `R$${value.toFixed(2)}` : ''} // Exibir dentro das fatias
                 labelLine={false} // Ocultar linha dos rótulos para fora
             >
                 {dadosAgrupados.map((entry, index) => (

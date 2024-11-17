@@ -14,7 +14,7 @@ function Grid({ dadosFin, onDelete }) {
     };
 
     return (
-        <div>
+        <div className={styles.gridDiv}>
             <table className={styles.resumeTable}>
                 <thead>
                     <tr>
