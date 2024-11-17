@@ -13,6 +13,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.reportButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;  /* Alinha verticalmente os itens no centro */
+    gap:0.5rem;
+    background-color: var(--blue);
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: white
+}
+
 .dashboardDiv {
     padding: 1.5rem 3rem;
     align-items: center;
@@ -47,7 +58,7 @@
 
 }
 
-.spentSection {
+.spent_income_Section {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;

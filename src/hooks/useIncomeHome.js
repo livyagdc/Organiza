@@ -28,6 +28,11 @@ export default function useIncomeHome() {
         setSaida(Saidas);
     }, [dadosFin, atualizaGrid]);
 
+    const dadosCombinados = [
+        ...dadosFin.filter(item => item.tipo === 1), // Despesas
+        ...dadosFin.filter(item => item.tipo === 0), // Receitas
+    ];
+
     function handleSaveIncome(dados) {
         const data = [...dadosFin, dados];
         setDadosFin(data);
@@ -63,6 +68,7 @@ export default function useIncomeHome() {
         saida,
         handleSaveIncome,
         handleSaveSpent,
-        onDelete
+        onDelete,
+        dadosCombinados
     };
 }

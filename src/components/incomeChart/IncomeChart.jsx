@@ -4,13 +4,13 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 // Cores para os setores
 const cores = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A569BD', '#E74C3C'];
 
-function SpentChart({ dadosFin }) {
+function IncomeChart({ dadosFin }) {
     const agruparPorCategoria = (dadosFin) => {
         return dadosFin
-            .filter(item => item.tipo === 1) // Filtrar apenas os dados de "spent" (tipo === 1)
+            .filter(item => item.tipo === 0) // Filtrar apenas os dados de "spent" (tipo === 1)
             .reduce((acc, cur) => {
-                const categoria = cur.categoriaSelecionadaSpent;
-                const valor = Number(cur.spent) || 0;
+                const categoria = cur.categoriaSelecionadaIncome;
+                const valor = Number(cur.income) || 0;
 
                 if (acc[categoria]) {
                     acc[categoria] += valor;
@@ -27,7 +27,7 @@ function SpentChart({ dadosFin }) {
     }));
 
     // Se não houver dados agrupados, criamos um objeto vazio com um valor 0
-    if (dadosAgrupados.length === 0) {
+      if (dadosAgrupados.length === 0) {
         dadosAgrupados.push({ name: 'Sem Dados', value: 0 });
     }
 
@@ -56,4 +56,4 @@ function SpentChart({ dadosFin }) {
     );
 }
 
-export default SpentChart;
+export default IncomeChart;
