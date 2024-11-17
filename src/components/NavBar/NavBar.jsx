@@ -16,22 +16,24 @@ export default function Navbar() {
     return (
         <section className={styles.navbar}>
             <div className={styles.logo}><Link href="/dashboard"><img src="https://res.cloudinary.com/dcbd1dnvk/image/upload/v1730427036/rganiza__2_-removebg-preview_2_rdnqbn.png" alt="logo" /></Link></div>
+            <div className={styles.menu}>
 
-            <div className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
+                <button className={styles.menuToggle} onClick={toggleMenu}>
+                    {isMenuOpen ? <FaTimes className={styles.menuIcon} /> : <FaBars className={styles.menuIcon} />}
+                </button>
 
-                <Link href="/dashboard"> <MdOutlineHome /> Home</Link>
+                <div className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
 
-                <Link href="/budget"> <MdBarChart /> Orçamento</Link>
+                    <Link href="/dashboard"> <MdOutlineHome /> Home</Link>
 
-                <Link href="/resume"> <MdMonetizationOn/> Despesas/Receitas</Link>
+                    <Link href="/budget"> <MdBarChart /> Orçamento</Link>
 
-                <Link href="/investments"> <MdTrendingUp /> Investimentos</Link>
+                    <Link href="/resume"> <MdMonetizationOn /> Despesas/Receitas</Link>
 
+                    <Link href="/investments"> <MdTrendingUp /> Investimentos</Link>
+
+                </div>
             </div>
-
-            <button className={styles.menuToggle} onClick={toggleMenu}>
-                {isMenuOpen ? <FaTimes className={styles.menuIcon} /> : <FaBars className={styles.menuIcon} />}
-            </button>
 
             <div className="userMenuDiv"><UserMenu /></div>
         </section>

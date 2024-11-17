@@ -108,7 +108,7 @@
     }
 
     .menuToggle {
-        display: block;
+        display: flex;
     }
 }
 

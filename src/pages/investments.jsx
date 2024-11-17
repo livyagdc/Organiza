@@ -20,15 +20,19 @@ export default function Investments() {
             <div className="cont">
                 <Navbar />
                 <div className="main">
+
                     <h1 className={styles.investTitle}>Investimentos</h1>
                     <div className={styles.investFormDiv}>
-                        <DynamicForm
-                            title="Adicionar investimento"
-                            fields={investmentFields}
-                            buttonLabel="Adicionar Investimento"
-                            onSubmit={handleAddInvestment}
-                        />
+                        <section className={styles.investFormSection}>
+                            <DynamicForm
+                                title="Adicionar investimento"
+                                fields={investmentFields}
+                                buttonLabel="Adicionar Investimento"
+                                onSubmit={handleAddInvestment}
+                            />
+                        </section>
                     </div>
+
                     <h1 className={styles.investListTitle}>Lista de Investimentos</h1>
                     <InvestmentList
                         investments={investments}

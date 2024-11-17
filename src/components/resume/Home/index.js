@@ -10,10 +10,10 @@ import DynamicForm from "@/components/DynamicForm/DynamicForm";
 function Home() {
     const { dadosFin, saldo, entrada, saida, handleSaveIncome, handleSaveSpent, onDelete, dadosCombinados } = useIncomeHome();
 
-    const { inputIncomeFields, SaveIncome} = useIncomeForm(handleSaveIncome);
-    const { inputSpentFields,  SaveSpent } = useSpentForm(handleSaveSpent);
+    const { inputIncomeFields, SaveIncome } = useIncomeForm(handleSaveIncome);
+    const { inputSpentFields, SaveSpent } = useSpentForm(handleSaveSpent);
 
-    
+
 
     return (
         <div className="main">
@@ -21,15 +21,18 @@ function Home() {
             <Resumo saldo={saldo} entrada={entrada} saida={saida} />
             <div className={styles.containerSection}>
                 <h2 className={styles.secundaryTitle}>Gerenciar Gastos</h2>
-                    <div className={styles.formContainer}>
+                <div className={styles.formContainer}>
+                    <div className={styles.form}>
                         <DynamicForm
-                        title="Receitas"
-                        fields={inputIncomeFields}
-                        buttonLabel="Adicionar Receita"
-                        onSubmit={SaveIncome}
-                        state="income"
-                        
+                            title="Receitas"
+                            fields={inputIncomeFields}
+                            buttonLabel="Adicionar Receita"
+                            onSubmit={SaveIncome}
+                            state="income"
+
                         />
+                    </div>
+                    <div className={styles.form}>
                         <DynamicForm
                             title="Despesas"
                             fields={inputSpentFields}
@@ -38,6 +41,7 @@ function Home() {
                             state="spent"
                         />
                     </div>
+                </div>
                 <Grid dadosFin={dadosCombinados} onDelete={onDelete} />
             </div>
         </div>

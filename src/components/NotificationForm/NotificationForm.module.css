@@ -3,3 +3,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.notificationFormSection {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--zinc-400);
+    border-radius: 0.375rem;
+    max-width: 100%;
+}
