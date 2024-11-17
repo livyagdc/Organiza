@@ -6,6 +6,7 @@ import React from "react";
 import formStyle from "@/styles/form.module.css";
 import HomeNavBar from "@/components/HomeNavBar/HomeNavbar"
 import Footer from "@/components/Footer/Footer";
+import DynamicForm from "@/components/DynamicForm/DynamicForm";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -41,59 +42,54 @@ export default function Login() {
     }
   };
 
+  const fieldsLogin = [
+    {
+      label: "Email",
+      type: "email",
+      value: email,
+      onChange: setEmail,
+      placeholder: "Digite seu email",
+      required: true,
+    },
+    {
+      label: "Senha",
+      type: "password",
+      value: password,
+      onChange: setPassword,
+      placeholder: "Digite sua senha",
+      required: true,
+    }
+  ];
+
   return (
-      <div className="cont">
-        <HomeNavBar />
-        <div className="main">
-          <div className={formStyle.login}>
-            <div className={formStyle.authDiv}>
-              <section className={formStyle.formSection}>
-                <h1 className={formStyle.authTitle}>Login</h1>
-                <form className={formStyle.authForm} onSubmit={handleSubmit}>
+    <div className="cont">
+      <HomeNavBar />
+      <div className="main">
+        <div className={formStyle.login}>
+          <div className={formStyle.authDiv}>
+            <section className={formStyle.formSection}>
+              <DynamicForm
+                title="Login"
+                fields={fieldsLogin}
+                buttonLabel="Entrar"
+                onSubmit={handleSubmit}
+              />
 
-                  <div className={formStyle.inputDiv}>
-                    <div className={formStyle.label}>
-                      <h3>Email <span>*</span></h3>
-                    </div>
-                    <input className={formStyle.formInput}
-                      type="email"
-                      placeholder="Digite seu email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
+              {error && <p className={formStyle.error}>{error}</p>}
 
-                  <div className={formStyle.inputDiv}>
-                    <div className={formStyle.label}>
-                      <h3>Senha <span>*</span></h3>
-                    </div>
-                    <input className={formStyle.formInput}
-                      type="password"
-                      placeholder="Digite sua senha"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
+              <span className={formStyle.formLink}>
+                Ainda não possui uma conta?
+                <strong>
+                  <Link href="./register"> Inscreva-se</Link>
+                </strong>
+              </span>
+            </section>
 
-                  {error && <p className={formStyle.error}>{error}</p>}
-                  <button className={formStyle.formBt} type="submit">Entrar</button>
-                </form>
-
-                <span className={formStyle.formLink}>
-                  Ainda não possui uma conta?
-                  <strong>
-                    <Link href="./register"> Inscreva-se</Link>
-                  </strong>
-                </span>
-              </section>
-
-            </div>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
+    </div>
 
   );
 }

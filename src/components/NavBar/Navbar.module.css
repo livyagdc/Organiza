@@ -7,11 +7,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
 .navLinks {
     display: flex;
     align-items: center;
@@ -52,13 +47,12 @@
 
 @media (max-width: 1024px) {
     .navbar {
-        flex-direction: column;
         padding: 1rem;
     }
 
-    .logo {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
+    .logo img {
+        max-width: 100px;
+        margin-bottom: 0.1rem;
     }
 
     .navLinks {
@@ -84,11 +78,6 @@
 @media (max-width: 600px) {
     .navbar {
         padding: 0.8rem;
-    }
-
-    .logo {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
     }
 
     .navLinks a {

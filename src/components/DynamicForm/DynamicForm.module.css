@@ -1,17 +1,13 @@
 /* Estilo Geral para Formulários */
 .form-container {
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 0.5rem;
     align-items: center;
     justify-content: center;
     color: black;
-    border: 1px solid var(--zinc-400);
-    border-radius: 0.375rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     max-width: 100%;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .form-container.spentState {

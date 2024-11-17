@@ -21,7 +21,7 @@
 }
 
 .budgetListTitle {
-    padding: 1rem 3rem 0.5rem 3rem;
+    padding: 1rem;
     color: var(--zinc-500);
     font-size: 1.2rem;
 }
@@ -80,4 +80,25 @@
 .editButton:hover,
 .deleteButton:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+    .budgetListTitle {
+        font-size: small;
+        padding: 0.1rem;
+    }
+
+    .budgetTable {
+        font-size: small;
+    }
+
+    .budgetTable th,
+    .budgetTable td {
+        font-size: x-small;
+        padding: 0.1rem;
+    }
+
+    .budgetsListDiv {
+        padding: 1rem 1.5rem;
+    }
 }

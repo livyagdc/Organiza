@@ -46,6 +46,7 @@
 
 .label span {
   color: var(--red-500);
+  font-size: 0.8rem;
 }
 
 .formInput {
@@ -78,7 +79,8 @@
 }
 
 .error {
+  text-align: center;
   color: var(--red-500);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin-top: 0.25rem;
 }

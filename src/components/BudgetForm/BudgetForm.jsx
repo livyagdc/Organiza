@@ -61,12 +61,14 @@ export default function BudgetForm() {
 
     return (
         <div className={style.budgetFormDiv}>
-            <DynamicForm
-                title="Definir Orçamento"
-                fields={budgetFields}
-                buttonLabel="Salvar Orçamento"
-                onSubmit={handleSaveBudget}
-            />
+            <section className={style.budgetFormSection}>
+                <DynamicForm
+                    title="Definir Orçamento"
+                    fields={budgetFields}
+                    buttonLabel="Salvar Orçamento"
+                    onSubmit={handleSaveBudget}
+                />
+            </section>
         </div>
     );
 };
