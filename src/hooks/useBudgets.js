@@ -46,10 +46,13 @@ export default function useBudgets() {
 
     const handleDeleteBudget = (budgetId) => {
         const email = localStorage.getItem("userEmail");
-        const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
-        const updatedBudgets = savedBudgets.filter(budget => budget.budgetId !== budgetId);
-        setBudgets(updatedBudgets);
-        localStorage.setItem(`budgets_${email}`, JSON.stringify(updatedBudgets));
+        if (email) {
+            const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
+            const updatedBudgets = savedBudgets.filter(budget => budget.budgetId !== budgetId);
+            setBudgets(updatedBudgets);
+            localStorage.setItem(`budgets_${email}`, JSON.stringify(updatedBudgets));
+        }
+
     };
 
     return {
