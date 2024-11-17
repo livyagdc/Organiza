@@ -15,8 +15,8 @@ export default function useIncomeHome() {
     }, []);
 
     useEffect(() => {
-        const totalSaida = dadosFin.filter((item) => item.tipo === 1).map((transaction) => Number(transaction.valor));
-        const totalEntrada = dadosFin.filter((item) => item.tipo === 0).map((transaction) => Number(transaction.valor));
+        const totalSaida = dadosFin.filter((item) => item.tipo === 1).map((transaction) => Number(transaction.spent));
+        const totalEntrada = dadosFin.filter((item) => item.tipo === 0).map((transaction) => Number(transaction.income));
 
         const Entradas = totalEntrada.reduce((acc, cur) => acc + cur, 0).toFixed(2);
         const Saidas = totalSaida.reduce((acc, cur) => acc + cur, 0).toFixed(2);
@@ -28,7 +28,21 @@ export default function useIncomeHome() {
         setSaida(Saidas);
     }, [dadosFin, atualizaGrid]);
 
-    function handleSave(dados) {
+    const dadosCombinados = [
+        ...dadosFin.filter(item => item.tipo === 1), // Despesas
+        ...dadosFin.filter(item => item.tipo === 0), // Receitas
+    ];
+
+    function handleSaveIncome(dados) {
+        const data = [...dadosFin, dados];
+        setDadosFin(data);
+        setAtualizaGrid(!atualizaGrid);
+        if (typeof window !== "undefined") {
+            localStorage.setItem('Financeiro', JSON.stringify(data));
+        }
+    }
+
+    function handleSaveSpent(dados) {
         const data = [...dadosFin, dados];
         setDadosFin(data);
         setAtualizaGrid(!atualizaGrid);
@@ -52,7 +66,9 @@ export default function useIncomeHome() {
         saldo,
         entrada,
         saida,
-        handleSave,
-        onDelete
+        handleSaveIncome,
+        handleSaveSpent,
+        onDelete,
+        dadosCombinados
     };
 }
