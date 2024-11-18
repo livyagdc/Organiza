@@ -7,6 +7,8 @@
 }
 
 .investFormSection {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border: 1px solid var(--zinc-400);
@@ -38,12 +40,20 @@
 }
 /* Fim - Invest form */
 
+/* Layout para gráficos e formulário */
 .investsDiv {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte em telas pequenas */
     padding: 2rem;
 }
 
+.investsDiv section {
+    flex: 1 1 45%; /* Ocupa até 45% da largura, com flexibilidade */
+    min-width: 300px; /* Largura mínima para garantir que o conteúdo não fique comprimido */
+}
+
+/* Estilos para o título */
 .investTitle, .investListTitle {
     margin: 0;
     padding: 1rem 3rem 0.5rem 3rem;
@@ -51,25 +61,20 @@
     font-size: 1.2rem;
 }
 
-/* Layout responsivo para cards */
-.investListSection {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 0.5rem 2rem;
-}
-
+/* Layout responsivo */
 @media (max-width: 1024px) {
-    .investListSection {
-        grid-template-columns: repeat(2, 1fr);
+    .investsDiv section {
+        flex: 1 1 100%; /* Em telas menores que 1024px, os itens ocupam 100% da largura */
+    }
+    .investTitle, .investListTitle {
+        margin: 0;
+        padding: 0.5rem;
+        color: var(--zinc-500);
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 600px) {
-    .investListSection {
-        grid-template-columns: 1fr;
-    }
-
     .investTitle, .investListTitle {
         margin: 0;
         padding: 0.5rem;
