@@ -1,6 +1,4 @@
 // auth/register.jsx
-"use client";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,6 +6,25 @@ import formStyle from "@/styles/form.module.css";
 import HomeNavBar from "@/components/HomeNavBar/HomeNavbar";
 import Footer from "@/components/Footer/Footer";
 import DynamicForm from "@/components/DynamicForm/DynamicForm";
+
+// Função para SSR
+export async function getServerSideProps(context) {
+    const token = context.req.cookies.token;
+
+    // Se o usuário já estiver autenticado, redireciona para o dashboard
+    if (token) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {}, // Não passa nada para a página
+    };
+}
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -36,7 +53,7 @@ export default function Register() {
                 setError(data.message || "Falha ao registrar");
             }
         } catch (error) {
-            setError("Um erro ocorreu. Por favor tente de novo.")
+            setError("Um erro ocorreu. Por favor tente de novo.");
         }
     };
 
