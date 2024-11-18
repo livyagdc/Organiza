@@ -2,11 +2,28 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import React from "react";
 import formStyle from "@/styles/form.module.css";
-import HomeNavBar from "@/components/HomeNavBar/HomeNavbar"
+import HomeNavBar from "@/components/HomeNavBar/HomeNavbar";
 import Footer from "@/components/Footer/Footer";
 import DynamicForm from "@/components/DynamicForm/DynamicForm";
+
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.token;
+
+  // Se o usuário já estiver autenticado, redireciona para o dashboard
+  if (token) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}, // Não passa nada para a página
+  };
+}
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -16,7 +33,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("")
+    setError("");
 
     try {
       const res = await fetch("/api/auth/login", {
@@ -29,7 +46,7 @@ export default function Login() {
 
       if (res.ok) {
         const data = await res.json();
-        localStorage.setItem('token', data.token);
+        document.cookie = "token=" + data.token + "; path=/; expires=" + new Date(new Date().getTime() + 60 * 60 * 1000).toUTCString();
         localStorage.setItem('userName', data.name);
         localStorage.setItem('userEmail', data.email);
         router.push("/dashboard");
@@ -38,7 +55,7 @@ export default function Login() {
         setError(data.message || "Falha no login");
       }
     } catch {
-      setError("Ocorreu um erro. Tente novamente.")
+      setError("Ocorreu um erro. Tente novamente.");
     }
   };
 
@@ -58,7 +75,7 @@ export default function Login() {
       onChange: setPassword,
       placeholder: "Digite sua senha",
       required: true,
-    }
+    },
   ];
 
   return (
@@ -74,9 +91,7 @@ export default function Login() {
                 buttonLabel="Entrar"
                 onSubmit={handleSubmit}
               />
-
               {error && <p className={formStyle.error}>{error}</p>}
-
               <span className={formStyle.formLink}>
                 Ainda não possui uma conta?
                 <strong>
@@ -84,12 +99,10 @@ export default function Login() {
                 </strong>
               </span>
             </section>
-
           </div>
         </div>
       </div>
       <Footer />
     </div>
-
   );
 }
