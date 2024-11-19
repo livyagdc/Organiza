@@ -38,7 +38,7 @@ export default function Register() {
         setError("");
 
         try {
-            const res = await fetch("/api/auth/register", {
+            const res = await fetch("https://organiza-by1sgod9a-livyas-projects-50c87bf0.vercel.app/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Register() {
             });
 
             if (res.ok) {
-                router.push("/auth/login");
+                router.push("https://organiza-by1sgod9a-livyas-projects-50c87bf0.vercel.app/api/auth/login");
             } else {
                 const data = await res.json();
                 setError(data.message || "Falha ao registrar");
