@@ -59,7 +59,7 @@ export default function Investments({ initialGrowthData }) {
 // Função getStaticProps simplificada
 export async function getStaticProps() {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/investment-rates`); // Buscar dados de crescimento da API
+        const res = await fetch(`https://organiza.onrender.com/api/investment-rates`); // Buscar dados de crescimento da API
         const growthData = await res.json();
 
         return {

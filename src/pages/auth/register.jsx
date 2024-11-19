@@ -38,7 +38,7 @@ export default function Register() {
         setError("");
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`, {
+            const res = await fetch(`https://organiza.onrender.com/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
