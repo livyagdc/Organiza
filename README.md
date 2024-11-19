@@ -1,40 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-## Getting Started
+# Organiza
 
-First, run the development server:
+Organiza é uma aplicação web desenvolvida com o objetivo de ajudar os usuários a organizar suas finanças de maneira eficiente e prática. Com recursos como gerenciamento de receitas e despesas, definição de metas orçamentárias, rastreamento de investimentos e notificações, o Organiza oferece uma solução completa para quem deseja ter controle financeiro.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Cadastro e Login de Usuários**: Criação de contas seguras com validação de e-mail e senha.
+- **Painel Principal**: Visão geral das finanças e acesso a relatórios detalhados.
+- **Cashflow**: Gerenciamento de receitas e despesas, com opções de edição e exclusão.
+- **Orçamento**: Definição de metas financeiras e alertas para quando os limites forem ultrapassados.
+- **Investimentos**: Rastreamento e cálculo de crescimento de investimentos, com opções pré-definidas como Tesouro Direto, CDB, LCI/LCA, entre outros.
+- **Notificações**: Sistema de lembretes para pagamentos e eventos importantes.
+- **Design Responsivo**: Experiência fluida em dispositivos móveis e desktops.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Tecnologias Utilizadas
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Front-end**: [Next.js](https://nextjs.org/)
+- **Estilização**: CSS Modules e bibliotecas complementares.
+- **Banco de Dados**: MySQL.
+- **Autenticação**: Implementação segura com validação de usuário.
+- **Deploy**: Realizado com [Render](https://render.com/).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Páginas
+1. **Registro e Login**: Interface para autenticação e criação de contas.
+2. **Painel Principal**: Resumo financeiro e gráficos.
+3. **Cashflow**: Gerenciamento de receitas e despesas.
+4. **Orçamento**: Interface para definição de metas.
+5. **Investimentos**: Controle e acompanhamento de investimentos.
+6. **Configurações de Notificações**: Personalização de lembretes e alertas.
 
-## Learn More
+### Design
+- Prototipado com [Figma](https://www.figma.com/proto/f4upQT7gBnha1pQeM18vQ2/Organiza?node-id=0-1&t=oNgpa6bCdTDyG2Ge-1).
+- Segue princípios de um design system.
 
-To learn more about Next.js, take a look at the following resources:
+## Requisitos de Instalação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+1. Certifique-se de ter o Node.js e o MySQL instalados.
+2. Clone o repositório:
+   ```bash
+   git clone https://github.com/usuario/organiza.git
+   ```
+3. Instale as dependências do projeto:
+   ```bash
+   npm install
+   ```
+4. Configure o banco de dados no arquivo `.env`:
+   ```env
+   DATABASE_URL="mysql://usuario:senha@localhost:3306/organiza"
+   ```
+5. Execute as migrações do Prisma para criar as tabelas no banco de dados:
+   ```bash
+   npx prisma migrate dev
+   ```
+6. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+7. Inicie o build:
+  ```bash
+  npm run build
+  ```
+8. Encerre o terminal do npm run dev e inicie:
+  ```bash
+  npm start
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Links Importantes
 
-## Deploy on Vercel
+- **Deploy**: [https://organiza.onrender.com](https://organiza.onrender.com)
+- **Design no Figma**: [Organiza no Figma](https://www.figma.com/proto/f4upQT7gBnha1pQeM18vQ2/Organiza?node-id=0-1&t=oNgpa6bCdTDyG2Ge-1)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contribuição
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests. 
