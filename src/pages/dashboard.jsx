@@ -42,7 +42,7 @@ export default function Dashboard() {
                 <div className="main">
                     <div className={styles.dashboardDiv} ref={captureRef}>
 
-                        <button className={styles.reportButton} onClick={gerarRelatorio}> <MdInsertDriveFile/> Gerar Relatório</button>
+                        <button className={styles.reportButton} onClick={gerarRelatorio}> <MdInsertDriveFile /> Gerar Relatório</button>
 
                         <section>
                             <Resumo saldo={saldo} entrada={entrada} saida={saida} />
@@ -65,10 +65,8 @@ export default function Dashboard() {
                             </div>
                         </section>
 
-                        <section>
-                            <div>
-                                <Grid dadosFin={dadosCombinados} onDelete={onDelete} />
-                            </div>
+                        <section className={styles.gridSection}>
+                            <Grid dadosFin={dadosCombinados} onDelete={onDelete} />
                         </section>
 
                     </div>
@@ -76,7 +74,7 @@ export default function Dashboard() {
                 <Footer />
             </div>
 
-            
+
         </PrivateRoute>
     );
 }

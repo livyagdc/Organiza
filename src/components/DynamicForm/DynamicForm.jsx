@@ -3,6 +3,7 @@ import styles from './DynamicForm.module.css';
 
 export default function DynamicForm({ title, fields, buttonLabel, onSubmit, state }) {
   const formStateClass = state === 'spent' ? styles.spentState : state === 'income' ? styles.inputState : '';
+  
   return (
     <div className={`${styles['form-container']} ${formStateClass}`}>
       <h2 className={styles['form-title']}>{title}</h2>

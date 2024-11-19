@@ -14,7 +14,7 @@ function Grid({ dadosFin, onDelete }) {
     };
 
     return (
-        <div>
+        <div className={styles.gridDiv}>
             <table className={styles.resumeTable}>
                 <thead>
                     <tr>
@@ -33,7 +33,6 @@ function Grid({ dadosFin, onDelete }) {
                         const descricao = dados.tipo === 0 ? dados.descricaoIncome : dados.descricaoSpent;
                         const data = formatarData (dados.tipo === 0 ? dados.dataIncome : dados.dataSpent);
                         const valor = Number(dados.tipo === 0 ? dados.income : dados.spent);
-                        console.log(valor)
                         // Garante que valor seja um número válido, caso contrário, atribui 0
                         const valorExibido = (typeof valor === 'number' && !isNaN(valor)) ? valor : 0;
                         

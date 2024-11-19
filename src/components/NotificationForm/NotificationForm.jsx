@@ -48,12 +48,14 @@ export default function NotificationForm() {
 
     return (
         <div className={styles.notificationFormDiv}>
-            <DynamicForm
-                title="Adicionar Notificação"
-                fields={notificationFields}
-                buttonLabel="Adicionar"
-                onSubmit={handleAddNotification}
-            />
+            <div className={styles.notificationFormSection}>
+                <DynamicForm
+                    title="Adicionar Notificação"
+                    fields={notificationFields}
+                    buttonLabel="Adicionar"
+                    onSubmit={handleAddNotification}
+                />
+            </div>
         </div>
     );
 }

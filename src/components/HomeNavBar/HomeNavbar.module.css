@@ -58,3 +58,89 @@
 .registerButton:hover, .loginButton:hover {
     opacity: 0.8;
 }
+
+.menuToggle {
+    display: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.1rem;
+}
+
+.menuIcon {
+    font-size: 1.8rem;
+    color: var(--zinc-700);
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo {
+        font-size: 2rem;
+        margin: 0.5rem;
+    }
+
+    .navLinks {
+        flex-direction: column;
+        margin: 0.5rem;
+        display: none;
+    }
+
+    .navLinks.active {
+        display: flex;
+    }
+
+    .navLinks li {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .authLinks {
+        display: flex;
+    }
+
+    .loginButton, .registerButton {
+        padding: 0.8rem 1rem;
+    }
+
+    .menuToggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.8rem;
+    }
+
+    .logo {
+        max-width: 100px;
+        margin: 0.1rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navLinks li {
+        margin: 0.1rem;
+        font-size: 0.9rem;
+    }
+
+    .authLinks {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        margin: 0.1rem;
+    }
+
+    .loginButton, .registerButton {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        margin: 0.1rem;
+    }
+
+}

@@ -5,12 +5,15 @@ import useIncomeHome from '@/hooks/useIncomeHome';
 
 export default function BudgetChart() {
     const [budgets, setBudgets] = useState([]);
+    const [widthWindow, setWidthWindow] = useState(0);
 
     const {
         dadosFin
-            }= useIncomeHome()
+    }= useIncomeHome()
 
     useEffect(() => {
+        setWidthWindow(window.innerWidth);
+
         const email = localStorage.getItem("userEmail");
         if (email) {
             const savedBudgets = JSON.parse(localStorage.getItem(`budgets_${email}`)) || [];
@@ -35,11 +38,17 @@ export default function BudgetChart() {
         };
     });
     
-    console.log(mergedData);
+    const widthGraph = (widthWindow) => {
+        if (widthWindow <= 600) {
+            return Number(250)
+        } else {
+            return Number(500)
+        }
+    }
 
     return (
         <div>
-            <BarChart width={600} height={300} data={mergedData}>
+            <BarChart width={widthGraph(widthWindow)} height={300} data={mergedData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="category" />
                 <YAxis />
