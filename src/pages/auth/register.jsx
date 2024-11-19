@@ -1,12 +1,30 @@
 // auth/register.jsx
-"use client";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import formStyle from "@/styles/form.module.css";
 import HomeNavBar from "@/components/HomeNavBar/HomeNavbar";
 import Footer from "@/components/Footer/Footer";
+import DynamicForm from "@/components/DynamicForm/DynamicForm";
+
+// Função para SSR
+export async function getServerSideProps(context) {
+    const token = context.req.cookies.token;
+
+    // Se o usuário já estiver autenticado, redireciona para o dashboard
+    if (token) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {}, // Não passa nada para a página
+    };
+}
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -35,72 +53,65 @@ export default function Register() {
                 setError(data.message || "Falha ao registrar");
             }
         } catch (error) {
-            setError("Um erro ocorreu. Por favor tente de novo.")
+            setError("Um erro ocorreu. Por favor tente de novo.");
         }
     };
+
+    const registerFields = [
+        {
+            label: "Nome",
+            type: "text",
+            value: name,
+            onChange: setName,
+            placeholder: "Digite seu nome",
+            required: true,
+        },
+        {
+            label: "Email",
+            type: "email",
+            value: email,
+            onChange: setEmail,
+            placeholder: "Digite seu email",
+            required: true,
+        },
+        {
+            label: "Senha",
+            type: "password",
+            value: password,
+            onChange: setPassword,
+            placeholder: "Digite sua senha",
+            required: true,
+        },
+
+    ];
 
     return (
         <div className="cont">
             <header><HomeNavBar /></header>
             <div className="main">
-            <div className={formStyle.register}>
-                <div className={formStyle.authDiv}>
-                    <section className={formStyle.formSection}>
-                        <h2 className={formStyle.authTitle}>Registre-se</h2>
-                        <form className={formStyle.authForm} onSubmit={handleSubmit}>
+                <div className={formStyle.register}>
+                    <div className={formStyle.authDiv}>
+                        <section className={formStyle.formSection}>
 
-                            <div className={formStyle.inputDiv}>
-                                <div className={formStyle.label}>
-                                    <h3>Nome <span>*</span></h3>
-                                </div>
-                            </div>
-                            <input className={formStyle.formInput}
-                                type="text"
-                                placeholder="Digite seu nome"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-
-                            <div className={formStyle.inputDiv}>
-                                <div className={formStyle.label}>
-                                    <h3>Email <span>*</span></h3>
-                                </div>
-                            </div>
-                            <input className={formStyle.formInput}
-                                type="email"
-                                placeholder="Digite seu email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-
-                            <div className={formStyle.inputDiv}>
-                                <div className={formStyle.label}>
-                                    <h3>Senha <span>*</span></h3>
-                                </div>
-                            </div>
-                            <input className={formStyle.formInput}
-                                type="password"
-                                placeholder="Digite sua senha"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
+                            <DynamicForm
+                                title="Registre-se"
+                                fields={registerFields}
+                                buttonLabel="Registrar"
+                                onSubmit={handleSubmit}
                             />
 
                             {error && <p className={formStyle.error}>{error}</p>}
-                            <button className={formStyle.formBt} type="submit">Registrar</button>
-                        </form>
-                        <span className={formStyle.formLink}>
-                            Já possui uma conta?
-                            <strong>
-                                <Link href="./login"> Entrar</Link>
-                            </strong>
-                        </span>
-                    </section>
+
+                            <span className={formStyle.formLink}>
+                                Já possui uma conta?
+                                <strong>
+                                    <Link href="./login"> Entrar</Link>
+                                </strong>
+                            </span>
+                        </section>
+                    </div>
+
                 </div>
-                
-            </div>
             </div>
             <Footer />
         </div>
