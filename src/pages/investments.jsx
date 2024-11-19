@@ -18,22 +18,10 @@ export default function Investments({ initialGrowthData }) {
 
     const [growthData, setGrowthData] = useState(initialGrowthData);
 
-    // Se a API for dinâmica e você quiser garantir que os dados se atualizem toda vez que a página carregar
-    useEffect(() => {
-        const fetchGrowthData = async () => {
-            try {
-                const res = await fetch(`/api/investment-rates?timestamp=${Date.now()}`);
-                if (!res.ok) throw new Error("Erro ao buscar dados");
-                const data = await res.json();
-                setGrowthData(data); // Atualiza os dados
-            } catch (error) {
-                console.error("Erro ao buscar os dados de crescimento", error);
-            }
-        };
-    
-        fetchGrowthData(); // Chama a função assim que a página for carregada
-    }, []); // Executa apenas uma vez ao carregar a página
-    
+    // UseEffect não faz mais a requisição, pois já estamos utilizando o ISR
+    // Se você precisar atualizar os dados do gráfico após 60 segundos, isso acontecerá automaticamente
+    // com o revalidate do ISR.
+
     return (
         <PrivateRoute>
             <div className="cont">
@@ -71,7 +59,7 @@ export default function Investments({ initialGrowthData }) {
 // Função getStaticProps simplificada
 export async function getStaticProps() {
     try {
-        const res = await fetch("http://localhost:3000/api/investment-rates"); // Buscar dados de crescimento da API
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/investment-rates`); // Buscar dados de crescimento da API
         const growthData = await res.json();
 
         return {
