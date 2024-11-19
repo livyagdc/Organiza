@@ -47,7 +47,7 @@ export default function Register() {
             });
 
             if (res.ok) {
-                router.push("https://organiza-by1sgod9a-livyas-projects-50c87bf0.vercel.app/api/auth/login");
+                router.push("/auth/login");
             } else {
                 const data = await res.json();
                 setError(data.message || "Falha ao registrar");
