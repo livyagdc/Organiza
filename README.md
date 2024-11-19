@@ -58,14 +58,14 @@ Organiza é uma aplicação web desenvolvida com o objetivo de ajudar os usuári
    ```bash
    npm run dev
    ```
-7. Inicie o build:
-  ```bash
-  npm run build
-  ```
-8. Encerre o terminal do npm run dev e inicie:
-  ```bash
-  npm start
-  ```
+ 7. Inicie o build:
+    ```bash
+    npm run build
+    ```
+ 8. Encerre o terminal do npm run dev e inicie:
+    ```bash
+    npm start
+    ```
 
 ## Links Importantes
 
