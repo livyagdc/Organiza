@@ -8,8 +8,9 @@ export default function useIncomeHome() {
     const [atualizaGrid, setAtualizaGrid] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const dadosSalvos = JSON.parse(localStorage.getItem('Financeiro')) ?? [];
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            const dadosSalvos = JSON.parse(localStorage.getItem(`Financeiro_${email}`)) ?? [];
             setDadosFin(dadosSalvos);
         }
     }, []);
@@ -37,8 +38,9 @@ export default function useIncomeHome() {
         const data = [...dadosFin, dados];
         setDadosFin(data);
         setAtualizaGrid(!atualizaGrid);
-        if (typeof window !== "undefined") {
-            localStorage.setItem('Financeiro', JSON.stringify(data));
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            localStorage.setItem(`Financeiro_${email}`, JSON.stringify(data));
         }
     }
 
@@ -46,8 +48,9 @@ export default function useIncomeHome() {
         const data = [...dadosFin, dados];
         setDadosFin(data);
         setAtualizaGrid(!atualizaGrid);
-        if (typeof window !== "undefined") {
-            localStorage.setItem('Financeiro', JSON.stringify(data));
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            localStorage.setItem(`Financeiro_${email}`, JSON.stringify(data));
         }
     }
 
@@ -56,8 +59,9 @@ export default function useIncomeHome() {
         data.splice(index, 1);
         setDadosFin(data);
         setAtualizaGrid(!atualizaGrid);
-        if (typeof window !== "undefined") {
-            localStorage.setItem('Financeiro', JSON.stringify(data));
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            localStorage.setItem(`Financeiro_${email}`, JSON.stringify(data));
         }
     }
 
